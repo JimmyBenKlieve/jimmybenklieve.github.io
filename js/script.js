@@ -40,6 +40,7 @@
             // Use <animate> SVG element
             $logo.children().wrap(document.createSVGElement('g'));
 
+            let animDelay = 1;
             let animSequence = [
                 0.2 , 0.2, 0.1,
                 0.05, 0.05,
@@ -56,7 +57,7 @@
                 0.4
             ];
 
-            animSequence.unshift(0);
+            animSequence.unshift(animDelay);
 
             $logo.children().each((i, el) => {
                 if (animSequence[i - 1]) {
@@ -77,7 +78,7 @@
         }
     })();
 
-    $('#sidebar-toggler').on('click', function (e) {
+    $('.toggler').on('click', function (e) {
         e.preventDefault();
         let $this   = $(this);
         let $target = $($this.attr('href'));

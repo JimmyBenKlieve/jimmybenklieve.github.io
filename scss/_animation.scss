@@ -1,0 +1,29 @@
+:root.not-ie {
+    .toggler {
+        &, * {
+            transition: all 140ms ease-in-out;
+            transform-origin: center center;
+        }
+
+        &.active {
+            .icon-menu > g > line {
+                &:first-child {
+                    transform: translateY(4px) rotate(45deg);
+                }
+
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+
+                &:last-child {
+                    transform: translateY(-4px) rotate(-45deg);
+                }
+            }
+
+            .icon-music-player .music-player-disc-handle {
+                transform: rotate(27.5deg);
+                transform-origin: left top;
+            }
+        }
+    }
+}

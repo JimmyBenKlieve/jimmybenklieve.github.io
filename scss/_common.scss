@@ -1,0 +1,69 @@
+.tooltip .tooltip-inner {
+    border-radius: 0;
+}
+
+html { width: 100%; height: 100%; }
+body { height: 100%; overflow: hidden; }
+
+#logo {
+    width: 32rem;
+    height: 99%;
+    min-width: 32rem;
+    min-height: 24rem;
+}
+
+.toggler {
+    display: inline-block;
+
+    .icon {
+        display: block;
+    }
+
+    &:hover {
+        background-color: #f4f4f4;
+    }
+}
+
+#sidebar-toggler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+#sidebar-menu {
+    $menu-width: 16rem;
+
+    position: absolute;
+    top: 0;
+    left: (-$menu-width);
+    bottom: 0;
+    width: $menu-width;
+    margin: 0;
+    padding-top: 5rem;
+    padding-bottom: .5rem;
+
+    z-index: 90;
+    background-color: #fafafa;
+    border-right: 1px solid #ccc;
+    box-shadow: 1px 0 4px rgba(0,0,0,.075);
+
+    transition: left 140ms ease-in-out;
+    font-family: 'new_ciclefina', sans-serif;
+
+    &.show {
+        left: 0;
+    }
+
+    .nav-link {
+        display: inline-block;
+        padding: .1em .5em;
+    }
+
+    .avatar {
+        width: 5rem;
+        height: 5rem;
+        border: 2px solid white;
+        box-shadow: 0 3px 5px rgba(0,0,0,.5);
+    }
+}

@@ -3,12 +3,25 @@ module.exports = function (grunt) {
     grunt.initConfig({
         copy: {
             files: {
-                src: ['CNAME', '**/*.*', '!Gruntfile.*', '!package.json', '!node_modules/**', '!commit/**'],
-                dest: './commit/',
+                src : ['./i/**', './font/**', './js/**', 'index.html', 'CNAME'],
+                dest: './public/',
             }
         },
+
+        sass: {
+            options: {
+                sourceMap  : true,
+                outputStyle: 'compressed',
+            },
+            files: {
+                src : './scss/bundle.scss',
+                dest: './public/css/bundle.min.css',
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.registerTask('default', ['copy']);
+    grunt.loadNpmTasks('grunt-sass');
+
+    grunt.registerTask('default', ['sass', 'copy']);
 }

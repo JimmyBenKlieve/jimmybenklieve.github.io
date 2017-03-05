@@ -2,14 +2,13 @@ language: node_js
 node_js: stable
 
 before_script:
-  - wget "http://music.163.com/api/playlist/detail?id=427756070" -O "./music-list.json"
-  - ls
+  - wget "http://music.163.com/api/playlist/detail?id=427756070" -O "./public/music-list.json"
+  - ll
 
 script:
-  - grunt
 
 after_script:
-  - cd ./commit
+  - cd ./public
   - git init
   - git config user.name "JimmyBenKlieve"
   - git config user.email "j.b.klieve@live.cn"
