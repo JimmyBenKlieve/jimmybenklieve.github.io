@@ -3,7 +3,6 @@ node_js: stable
 
 before_script:
   - wget "http://music.163.com/api/playlist/detail?id=427756070" -O "./public/music-list.json"
-  - ll
 
 script:
 
