@@ -40,7 +40,7 @@
             // Use <animate> SVG element
             $logo.children().wrap(document.createSVGElement('g'));
 
-            let animDelay = 1;
+            let animDelay = 0.5;
             let animSequence = [
                 0.2 , 0.2, 0.1,
                 0.05, 0.05,
