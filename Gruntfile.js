@@ -1,32 +1,14 @@
 module.exports = function (grunt) {
-    'use strict';
-
-    let $ = require('jquery');
-
-    console.log($)
-    for (var i in $) {
-        console.log(i);
-    }
-
-    /*
-    $.ajax({
-        url: 'http://music.163.com/api/playlist/detail?id=427756070',
-        type: 'GET',
-        dataType: 'JSON',
-    })
-    .done(console.log)
-    */
 
     grunt.initConfig({
-        connect: {
-            mirror: {
-                options: {
-                    base: 'music.163.com',
-                },
-            },
+        copy: {
+            files: {
+                src: ['CNAME', '**/*.*', '!Gruntfile.*', '!package.json', '!node_modules/**', '!commit/**'],
+                dest: './commit/',
+            }
         },
     });
 
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.registerTask('default', []);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.registerTask('default', ['copy']);
 }
