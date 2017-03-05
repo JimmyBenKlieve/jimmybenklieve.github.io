@@ -8,6 +8,7 @@ before_script:
 script:
 
 after_script:
+  - cp . ./public
   - cd ./public
   - git init
   - git config user.name "JimmyBenKlieve"
