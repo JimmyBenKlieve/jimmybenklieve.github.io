@@ -22,4 +22,4 @@ branches:
 
 env:
   global:
-    - GH_REF: github.com/JimmyBenKlieve/jimmybenklieve.github.io.git
+    - GH_REF: "github.com/JimmyBenKlieve/jimmybenklieve.github.io.git"
