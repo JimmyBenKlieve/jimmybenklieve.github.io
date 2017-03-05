@@ -1,0 +1,25 @@
+{
+  "name": "jimmybenklieve.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "netease-music.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "jquery": "^3.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmyBenKlieve/jimmybenklieve.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmyBenKlieve/jimmybenklieve.github.io/issues"
+  },
+  "homepage": "https://github.com/JimmyBenKlieve/jimmybenklieve.github.io#readme"
+}
