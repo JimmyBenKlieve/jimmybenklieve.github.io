@@ -38,20 +38,20 @@ html, body {
   background-color: #f4f4f4;
 }
 
-#sidebar-toggler * {
+.not-ie #sidebar-toggler * {
   transition: all 140ms ease-in-out;
   transform-origin: center center;
 }
 
-#sidebar-toggler.active .line1 {
+.not-ie #sidebar-toggler.active .line1 {
   transform: translateY(4px) rotate(45deg);
 }
 
-#sidebar-toggler.active .line2 {
+.not-ie #sidebar-toggler.active .line2 {
   opacity: 0;
 }
 
-#sidebar-toggler.active .line3 {
+.not-ie #sidebar-toggler.active .line3 {
   transform: translateY(-4px) rotate(-45deg);
 }
 

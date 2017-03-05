@@ -1,4 +1,7 @@
 (($) => {
+    let UA = window.detectUserAgent();
+    console.log(UA);
+
     (function logoMaker () {
         let asciiArt = new String([
             '#     #  ####  #    #    #    #  #######     #     #  #     # #######',
@@ -14,7 +17,7 @@
             '####  #     #  #    #    #    #  #######  #  #     #  #       #######',
         ].join('\n'));
 
-        console.log('%c' + asciiArt.toString(), 'font-weight: bold;');
+        console.log(asciiArt.toString());
 
         document.createSVGElement = function (tag, attributes) {
             let el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -27,42 +30,51 @@
 
         let $logo = $('#icon-logo');
 
-        $logo.children().wrap(document.createSVGElement('g'));
+        if (UA.browser === 'Internet Explorer' || UA.browser === 'Edge') {
+            // Just show the logo...
+            $logo.removeAttr('stroke-dashoffset', 'stroke-dasharray');
+        }
+        else {
+            $('html').addClass('not-ie');
 
-        let animSequence = [
-            0.2 , 0.2, 0.1,
-            0.05, 0.05,
-            0.25,
-            0.3,
-            0.05, 0.3,
-            0.05, 0.05,
-            0.1,
-            0.1, 0.05,
-            0.1,
-            0.1,
-            0.15, 0.15,
-            0.1,
-            0.4
-        ];
+            // Use <animate> SVG element
+            $logo.children().wrap(document.createSVGElement('g'));
 
-        animSequence.unshift(0);
+            let animSequence = [
+                0.2 , 0.2, 0.1,
+                0.05, 0.05,
+                0.25,
+                0.3,
+                0.05, 0.3,
+                0.05, 0.05,
+                0.1,
+                0.1, 0.05,
+                0.1,
+                0.1,
+                0.15, 0.15,
+                0.1,
+                0.4
+            ];
 
-        $logo.children().each((i, el) => {
-            if (animSequence[i - 1]) {
-            animSequence[i] = animSequence[i - 1] + animSequence[i];
-            }
+            animSequence.unshift(0);
 
-            let animEl = document.createSVGElement('animate', {
-            attributeName: 'stroke-dashoffset',
-            to: 0,
-            begin: animSequence[i] + 's',
-            dur: '1s',
-            fill: 'freeze',
-            repeatCount: 1
+            $logo.children().each((i, el) => {
+                if (animSequence[i - 1]) {
+                animSequence[i] = animSequence[i - 1] + animSequence[i];
+                }
+
+                let animEl = document.createSVGElement('animate', {
+                attributeName: 'stroke-dashoffset',
+                to: 0,
+                begin: animSequence[i] + 's',
+                dur: '1s',
+                fill: 'freeze',
+                repeatCount: 1
+                });
+
+                el.appendChild(animEl);
             });
-
-            el.appendChild(animEl);
-        });
+        }
     })();
 
     $('#sidebar-toggler').on('click', function (e) {
