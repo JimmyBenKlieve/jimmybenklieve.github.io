@@ -6,6 +6,7 @@ html { width: 100%; height: 100%; }
 body {
     height: 100%;
     overflow: hidden;
+    font-family: $font-base;
 
     & > footer {
         position: absolute;
@@ -75,7 +76,7 @@ body {
     box-shadow: 1px 0 4px rgba(0,0,0,.075);
 
     transition: left 140ms ease-in-out;
-    font-family: 'new_ciclefina', sans-serif;
+    font-family: $font-base-semi;
 
     &.show {
         left: 0;
