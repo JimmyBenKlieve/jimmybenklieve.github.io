@@ -1,6 +1,7 @@
 (($) => {
     let UA = window.detectUserAgent();
-    console.log(UA);
+
+    console.log(UA.browser, UA.version);
 
     (function logoMaker () {
         let asciiArt = new String([
@@ -17,7 +18,7 @@
             '####  #     #  #    #    #    #  #######  #  #     #  #       #######',
         ].join('\n'));
 
-        console.log(asciiArt.toString());
+        // console.log(asciiArt.toString());
 
         document.createSVGElement = function (tag, attributes) {
             let el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -81,7 +82,7 @@
     $('.toggler').on('click', function (e) {
         e.preventDefault();
         let $this   = $(this);
-        let $target = $($this.attr('href'));
+        let $target = $($this.attr('href') || $this.attr('data-target'));
 
         let isActive = $this.hasClass('active');
         if (isActive) {

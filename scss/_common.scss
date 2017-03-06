@@ -3,7 +3,22 @@
 }
 
 html { width: 100%; height: 100%; }
-body { height: 100%; overflow: hidden; }
+body {
+    height: 100%;
+    overflow: hidden;
+
+    & > footer {
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .breadcrumb {
+            background-color: transparent;
+        }
+    }
+}
 
 .background {
     position: absolute;
@@ -21,9 +36,7 @@ body { height: 100%; overflow: hidden; }
 }
 
 .toggler {
-    display: inline-block;
-
-    .icon {
+    &, .icon {
         display: block;
     }
 
@@ -37,6 +50,11 @@ body { height: 100%; overflow: hidden; }
     top: 0;
     left: 0;
     z-index: 100;
+
+    &,
+    .nav-link {
+        padding: 0;
+    }
 }
 
 #sidebar-menu {

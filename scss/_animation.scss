@@ -20,6 +20,10 @@
                 }
             }
 
+        }
+
+        &:hover,
+        &.active {
             .icon-music-player .music-player-disc-handle {
                 transform: rotate(27.5deg);
                 transform-origin: left top;
