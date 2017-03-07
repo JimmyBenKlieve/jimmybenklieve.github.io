@@ -60,6 +60,10 @@
                 }
             });
 
+            this._player.on('error', (e) => {
+                this.playNextTrack();
+            });
+
             this.playRandomTrack();
         }
 
@@ -90,21 +94,16 @@
 
             this.pauseTrack();
 
-            try {
-                this._player.load(audioUrl);
-                this._player.seek(0);
+            this._player.load(audioUrl);
+            this._player.seek(0);
 
-                this.$_albumImage.attr({ src: albumImageUrl });
-                this.$_trackArtistAndTitle.text(`${artistsName} - ${trackTitle}`);
+            this.$_albumImage.attr({ src: albumImageUrl });
+            this.$_trackArtistAndTitle.text(`${artistsName} - ${trackTitle}`);
 
-                this._player.play();
-                this._player.volume(1);
+            this._player.play();
+            this._player.volume(1);
 
-                this.$.addClass('audio-playback');
-            }
-            catch (e) {
-                this.playNextTrack();
-            }
+            this.$.addClass('audio-playback');
         }
 
         playPause () {
