@@ -17,7 +17,16 @@ module.exports = function (grunt) {
                 src : './scss/bundle.scss',
                 dest: './public/css/bundle.min.css',
             }
-        }
+        },
+
+        babel: {
+            options: {
+                sourceMap   : true,
+            },
+            files: {
+
+            },
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
