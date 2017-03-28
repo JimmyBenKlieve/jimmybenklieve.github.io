@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
 
     <!-- cdnjs
@@ -91,18 +92,23 @@
 
           <div class="music-controls row flex-row flex-nowrap align-items-end m-0">
             <div class="music-control music-control-prev d-none">
-              <i class="fa fa-fw fa-step-backward"></i>
+              <i class="rewind ionicon ion-skip-backward"></i>
             </div>
             <div class="music-control music-control-playpause">
-              <i class="fa fa-fw fa-play"></i>
-              <i class="fa fa-fw fa-pause"></i>
+              <i class="play ionicon ion-play"></i>
+              <i class="pause ionicon ion-pause"></i>
             </div>
             <div class="music-control music-control-next">
-              <i class="fa fa-fw fa-step-forward"></i>
+              <i class="forward ionicon ion-skip-forward"></i>
             </div>
           </div>
 
-          <span class="musicbox-name">MusicPod</span>
+          <span class="musicbox-name">
+            MusicPod
+            <a id="musicbox-expander" href="#">
+              <i class="ionicon ion-arrow-expand"></i>
+            </a>
+          </span>
         </div>
       </div>
     </div>
@@ -212,6 +218,7 @@
     <script src="http://cdn.bootcss.com/tether/1.4.0/js/tether.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <script src="http://cdn.bootcss.com/audio5js/0.1.10/audio5.min.js"></script>
+    <script src="http://cdn.bootcss.com/tween.js/r14/Tween.js"></script>
 
     <script src="js/ua-detect.js"></script>
     <script src="js/script.js"></script>

@@ -27,8 +27,16 @@ module.exports = function (grunt) {
 
             },
         },
+
+        watch: {
+            dev: {
+                files: ['index.html', './scss/*', './js/*'],
+                tasks: ['default'],
+            },
+        },
     });
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-sass');
 

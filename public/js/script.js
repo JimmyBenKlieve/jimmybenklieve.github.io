@@ -1,4 +1,9 @@
 (($) => {
+    requestAnimationFrame(function TweenAnimation () {
+        requestAnimationFrame(TweenAnimation);
+        TWEEN.update();
+    });
+
     let UA = window.detectUserAgent();
 
     console.log(UA.browser, UA.version);
@@ -97,5 +102,22 @@
 
     $('[data-toggle="tooltip"]').tooltip({
         container: 'body',
+    });
+})(jQuery);
+
+(($) => {
+    function rippleInEffect (sourceX, sourceY) {
+        let $window   = $(window);
+        let wndWidth  = $window.innerWidth();
+        let wndHeight = $window.innerHeight();
+
+        let r    = Math.sqrt(Math.pow(Math.max(sourceX, wndWidth - sourceX), 2) + Math.pow(Math.max(sourceY, wndHeight - sourceY), 1));
+        let top  = sourceY - r;
+        let left = sourceX - r;
+    }
+
+    $('musicbox-expander').on('click', (e) => {
+        e.preventDefault();
+        rippleInEffect(e.pageX, e.pageY);
     });
 })(jQuery);

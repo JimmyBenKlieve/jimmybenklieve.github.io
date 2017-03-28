@@ -117,19 +117,19 @@
                 z-index: 1;
                 color: white;
 
-                i.fa-play {
+                i.play {
                     position: relative;
                     left: .1em;
                 }
 
-                i.fa-pause {
+                i.pause {
                     position: relative;
                     display: none;
                 }
 
                 @at-root .audio-playback {
-                    i.fa-play  { display: none; }
-                    i.fa-pause { display: inline-block !important; }
+                    i.play  { display: none; }
+                    i.pause { display: inline-block !important; }
                 }
 
                 &:hover {
@@ -162,6 +162,10 @@
             padding-right: .25rem;
             color: lighten($musicbox-bg, 40%);
         }
+    }
+
+    #musicbox-expander {
+        color: inherit !important;
     }
 
     &.show {

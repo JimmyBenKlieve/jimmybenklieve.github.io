@@ -19,21 +19,33 @@ body {
 
         .breadcrumb {
             background-color: transparent;
+
+            .breadcrumb-item {
+                color: $color-inverse;
+                transition: all 140ms ease-in-out;
+
+                &:hover,
+                &:focus {
+                    color: lighten($color-lightest, 20%);
+                }
+
+                &:active {
+                    color: lighten($color-lightest, 10%);
+                }
+            }
         }
     }
 }
 
-a {
-    color: $color-inverse;
-    transition: all 140ms ease-in-out;
 
-    &:hover,
-    &:focus {
-        color: lighten($color-lightest, 20%);
-    }
 
-    &:active {
-        color: lighten($color-lightest, 10%);
+hr {
+    border-color: $color-inverse;
+}
+
+.breadcrumb-item {
+    & + &::before {
+        color: $color-inverse;
     }
 }
 
@@ -44,10 +56,10 @@ a {
     width: 100%;
     height: 100%;
 
-    .r0 { fill: darken($color, 2%); }
-    .r1 { fill: darken($color, 4%); }
-    .r2 { fill: darken($color, 6%); }
-    .r3 { fill: darken($color, 8%); }
+    .r0 { fill: darken($color, 1.5%); }
+    .r1 { fill: darken($color, 3%); }
+    .r2 { fill: darken($color, 4.5%); }
+    .r3 { fill: darken($color, 6%); }
 }
 
 #logo {
@@ -95,9 +107,10 @@ a {
     padding-top: 5rem;
 
     z-index: 90;
-    background-color: $color-dark;
+    //background-color: $color-dark;
+    background-color: rgba($color-darker, .6);
     border-right: 1px solid $color-darkest;
-    box-shadow: 1px 0 4px rgba(0,0,0,.075);
+    box-shadow: 1px 0 4px rgba(0,0,0,.15);
 
     transition: left 140ms ease-in-out;
     font-family: $font-base-semi;
@@ -120,13 +133,15 @@ a {
     footer {
         $footer-bg: #181818;
         $footer-color: #0e0e0e;
+
+        border-top: solid 1px darken($footer-bg, 2%);
         background-color: $footer-bg;
 
         .nav-link {
             display: inline-block;
             padding: .1em .5em;
             color: $footer-bg;
-            text-shadow: -1px -1px 0 darken($footer-bg, 20%), 1px 1px 0 lighten($footer-bg, 20%);
+            text-shadow: -1px -1px 0 darken($footer-bg, 12.5%), 1px 1px 0 lighten($footer-bg, 12.5%);
 
             &:hover,
             &:focus {
