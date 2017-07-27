@@ -46,7 +46,7 @@
 
     function hilbertRearrange (str) {
         let _arr = [];
-        let _iter = Math.ceil(Mat.sqrt(str.length));
+        let _iter = Math.ceil(Math.sqrt(str.length));
 
         let _size = _iter * _iter;
 
