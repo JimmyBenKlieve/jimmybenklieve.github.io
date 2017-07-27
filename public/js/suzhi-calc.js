@@ -63,6 +63,10 @@
     }
 
     function calcSuZhi (name) {
+        if (typeof name !== 'string' || !(name instanceof String)) {
+            throw new Error('请传入一个字符串');
+        }
+
         let _a = hilbertRearrange(md5(name));
         let _b = hilbertRearrange(md5(name.split().reverse().join('')));
 
@@ -84,6 +88,10 @@
         let _i8aa = new Int8Array(_aa);
         let _i8ab = new Int8Array(_ba);
 
+        if (name.includes('维系') || name.includes('维尼')) {
+            return -Infinity;
+        }
+
         return _i8aa
         .map((v, i) => v + _i8ab[i])
         .reduce((n, s) => n + s, 0);
@@ -93,7 +101,7 @@
         version: '0.0.2',
         description: '音游狗素质计算器（仅供娱乐，请勿当真）',
         author: 'J.B.Klieve',
-        help: '使用 calcSuZhi("<某人的名字>") 即可计算某人的音游素质指数。'
+        help: '在 “调试/控制台/Console” 输入 calcSuZhi("<某人的名字>") 即可计算某人的音游素质指数。'
     }
 
     for (let k in COPYRIGHT) {
@@ -102,6 +110,8 @@
             enumerable: false,
         });
     }
+
+    console.log(calcSuZhi.help);
 
     window.calcSuZhi = calcSuZhi;
 })(jQuery);
