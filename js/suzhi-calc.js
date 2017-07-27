@@ -63,7 +63,7 @@
     }
 
     function calcSuZhi (name) {
-        if (typeof name !== 'string' || !(name instanceof String)) {
+        if (typeof name !== 'string' && !(name instanceof String)) {
             throw new Error('请传入一个字符串');
         }
 
