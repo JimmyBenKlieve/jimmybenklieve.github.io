@@ -108,7 +108,7 @@ hr {
 
     z-index: 90;
     //background-color: $color-dark;
-    background-color: rgba($color-darker, .6);
+    background-color: rgba($color-darker, .8);
     border-right: 1px solid $color-darkest;
     box-shadow: 1px 0 4px rgba(0,0,0,.15);
 
@@ -127,7 +127,35 @@ hr {
     }
 
     .text-muted {
-        color: darken($color-inverse,25%) !important;
+        color: rgba(#ccc, .8) !important;
+    }
+
+    .my-collections {
+        overflow-y: auto;
+
+        ul {
+            &:empty::after {
+                content: "nothing's here yet...";
+                font-style: italic;
+                color:rgba(#ccc, .8);
+            }
+        }
+    }
+
+    a {
+        $link-color: #0275d8;
+
+        color: lighten($link-color, 20%);
+        transition: all 140ms ease-in-out;
+
+        &:hover,
+        &:focus {
+            color: lighten($link-color, 5%);
+        }
+
+        &:active {
+            color: darken($link-color, 5%);
+        }
     }
 
     footer {
@@ -136,21 +164,230 @@ hr {
 
         border-top: solid 1px darken($footer-bg, 2%);
         background-color: $footer-bg;
+        transition: color 140ms ease-in-out;
 
         .nav-link {
             display: inline-block;
             padding: .1em .5em;
-            color: $footer-bg;
-            text-shadow: -1px -1px 0 darken($footer-bg, 12.5%), 1px 1px 0 lighten($footer-bg, 12.5%);
+            color: #fff;
 
             &:hover,
             &:focus {
-                color: lighten($footer-color, 10%);
+                color: #888;
             }
 
             &:active {
-                color: $footer-color;
+                color: #555;
             }
+        }
+    }
+}
+
+.app-window {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 10000;
+
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $color-darker;
+    box-shadow: 0 2px 8px darken($color-darkest, 5%);
+    background-color: #fff;
+    transition: 140ms ease-in-out;
+    transition-property: opacity;
+
+    &.init {
+        &.transition-active {
+            transition: 660ms ease;
+            transition-property: transform, opacity;
+            transform-origin: center bottom;
+            transform-style: preserve-3d;
+        }
+
+        &.transition-from {
+            opacity: 0;
+            transform: perspective(32rem) translate3d(0, .1rem, -.5rem) rotateX(3deg);
+        }
+    }
+
+    &.destroy {
+        &.transition-active {
+            transition: all 200ms ease-in-out;
+            transform-origin: center center;
+            transform-style: preserve-3d;
+        }
+
+        &.transition-to {
+            transform: perspective(32rem) translateZ(-2rem);
+            opacity: 0;
+        }
+    }
+
+    & > .window-resizers {
+        $resizer-size: 5px;
+        $resizer-offset: ($resizer-size - 1) / 2;
+
+        & > * {
+            position: absolute;
+        }
+
+        .resizer-nw,
+        .resizer-n,
+        .resizer-ne,
+        .resizer-sw,
+        .resizer-s,
+        .resizer-se {
+            height: $resizer-size;
+        }
+
+        .resizer-nw,
+        .resizer-w,
+        .resizer-sw,
+        .resizer-ne,
+        .resizer-e,
+        .resizer-se {
+            width: $resizer-size;
+        }
+
+        .resizer-n,
+        .resizer-s {
+            left: $resizer-offset;
+            right: $resizer-offset;
+        }
+
+        .resizer-w,
+        .resizer-e {
+            top: $resizer-offset;
+            bottom: $resizer-offset;
+        }
+
+        .resizer-n {
+            top: $resizer-offset - $resizer-size;
+        }
+
+        .resizer-s {
+            bottom: $resizer-offset - $resizer-size;
+        }
+
+        .resizer-w {
+            left: $resizer-offset - $resizer-size;
+        }
+
+        .resizer-e {
+            right: $resizer-offset - $resizer-size;
+        }
+
+        .resizer-nw,
+        .resizer-ne {
+            top: $resizer-offset - $resizer-size;
+        }
+
+        .resizer-sw,
+        .resizer-se {
+            bottom: $resizer-offset - $resizer-size;
+        }
+
+        .resizer-nw,
+        .resizer-sw {
+            left: $resizer-offset - $resizer-size;
+        }
+
+        .resizer-ne,
+        .resizer-se {
+            right: $resizer-offset - $resizer-size;
+        }
+    }
+
+    &[resize="horizontal"] {
+        & > .window-resizers {
+            .resizer-w { cursor: w-resize; }
+            .resizer-e { cursor: e-resize; }
+        }
+    }
+
+    &[resize="vertical"] {
+        & > .window-resizers {
+            .resizer-n { cursor: n-resize; }
+            .resizer-s { cursor: s-resize; }
+        }
+    }
+
+    &[resizer="both"] {
+        & > .window-resizers {
+            .resizer-n { cursor: n-resize; }
+            .resizer-s { cursor: s-resize; }
+            .resizer-w { cursor: w-resize; }
+            .resizer-e { cursor: e-resize; }
+            .resizer-nw { cursor: nw-resize; }
+            .resizer-ne { cursor: ne-resize; }
+            .resizer-sw { cursor: sw-resize; }
+            .resizer-se { cursor: se-resize; }
+        }
+    }
+
+    & > .window-titlebar {
+        display: flex;
+        align-items: center;
+
+        flex: 0 0 auto;
+        padding: 0;
+        padding-left: 0.5rem;
+        height: 2rem;
+        font-size: 1rem;
+
+        background-color: $color-lightest;
+        user-select: none;
+        cursor: default;
+
+        transition: background-color 140ms ease-in-out;
+
+        .window-title {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        .window-command-button-group {
+            margin-left: auto;
+
+            .window-command-button {
+                border: 0;
+                background: none;
+                color: #fff;
+                outline: 0;
+                transition: color 140ms ease-in-out;
+
+                &:hover,
+                &:focus {
+                    color: #888;
+                }
+
+                &.command-close {
+                    &:hover,
+                    &:focus {
+                        color: #e24857;
+                    }
+                }
+            }
+        }
+    }
+
+    & > .window-client {
+        height: 0;
+        flex: 1 1 auto;
+        overflow: auto;
+    }
+
+    &.is-resizing,
+    &.is-moving {
+        opacity: 0.88;
+    }
+
+    &.is-focused {
+        & > .window-titlebar {
+            background-color: #1b1b1b;
         }
     }
 }

@@ -10,7 +10,7 @@ module.exports = function (grunt) {
 
         sass: {
             options: {
-                sourceMap  : true,
+                sourceMap: true,
                 outputStyle: 'compressed',
             },
             files: {
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
         babel: {
             options: {
-                sourceMap   : true,
+                sourceMap: true,
             },
             files: {
 
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
 
         watch: {
             dev: {
-                files: ['index.html', './scss/*', './js/*'],
+                files: ['index.html', './scss/**/*.*', './js/**/*.*'],
                 tasks: ['default'],
             },
         },

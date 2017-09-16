@@ -26,6 +26,7 @@
         &.active {
             .icon-music-player .music-player-disc-handle {
                 transform: rotate(27.5deg);
+                transform-style: flat;
                 transform-origin: left top;
             }
         }

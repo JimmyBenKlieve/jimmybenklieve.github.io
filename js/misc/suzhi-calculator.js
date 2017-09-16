@@ -64,7 +64,7 @@
 
     function calcSuZhi (name) {
         if (typeof name !== 'string' && !(name instanceof String)) {
-            throw new Error('请传入一个字符串');
+            name = String(name);
         }
 
         let _a = hilbertRearrange(md5(name));
@@ -97,21 +97,54 @@
         .reduce((n, s) => n + s, 0);
     }
 
-    const COPYRIGHT = {
-        version: '0.0.2',
-        description: '音游狗素质计算器（仅供娱乐，请勿当真）',
-        author: 'J.B.Klieve',
-        help: '在 “调试/控制台/Console” 输入 calcSuZhi("<某人的名字>") 即可计算某人的音游素质指数。'
+    class SuzhiCalculator {
+        static get name () {
+            return 'Misc/SuzhiCalculator';
+        }
+
+        static get defaults () {
+            return {
+                title: '音游狗素质计算器 V0.0.2 （仅供娱乐，请勿当真）',
+                height: 74,
+                minWidth: 480,
+                minHeight: 0,
+                resize: false,
+            };
+        }
+
+        constructor ($windowClient) {
+            this.$windowClient = $windowClient;
+
+            let $nameInput = $('<input>', {
+                class: 'form-control',
+                placeholder: '请输入名字',
+            });
+
+            let $resultDisplay = $('<input>', {
+                class: 'form-control',
+                placholder: '素质指数',
+                readonly: true,
+            });
+
+            let $calcButton = $('<button type="button" class="btn btn-primary"><i class="fa fa-arrow-circle-o-right"></i></button>');
+
+            $calcButton.on('click', () => {
+                let _name = $nameInput.val();
+                let _result = calcSuZhi(_name);
+
+                $resultDisplay.val(_result);
+            });
+
+            this.$windowClient.append(
+                $('<div>', { class: 'input-group' }).append([
+                    $nameInput,
+                    $('<span>', { class: 'input-group-btn' }).append($calcButton),
+                    $resultDisplay,
+                ])
+            )
+            .addClass('app-suzhi-calculator');
+        }
     }
 
-    for (let k in COPYRIGHT) {
-        Reflect.defineProperty(calcSuZhi, k, {
-            value: COPYRIGHT[k],
-            enumerable: false,
-        });
-    }
-
-    console.log(calcSuZhi.help);
-
-    window.calcSuZhi = calcSuZhi;
+    window._registerApp(SuzhiCalculator);
 })(jQuery);

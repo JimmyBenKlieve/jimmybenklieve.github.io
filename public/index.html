@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
 
     <!-- cdnjs
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     -->
 
+    <link rel="stylesheet" href="font/iconfont/iconfont.css">
     <link rel="stylesheet" href="font/New_Cicle.css">
     <link rel="stylesheet" href="css/bundle.min.css">
   </head>
@@ -131,6 +132,38 @@
         </p>
       </div>
 
+      <div class="col text-left mt-4 my-collections">
+        <h5>
+          <i class="fa fa-flask"></i>
+          Projects
+        </h5>
+
+        <ul class="list-unstyled"></ul>
+
+        <h5>
+          <i class="fa fa-gamepad"></i>
+          Mini Games
+        </h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#" onclick="_launchApp('Minigames/2048')">2048</a>
+          </li>
+        </ul>
+
+        <h5>
+          <i class="fa fa-cube"></i>
+          Miscellaneous
+        </h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#" onclick="_launchApp('Misc/SuzhiCalculator')">音游狗素质计算器</a>
+          </li>
+        </ul>
+
+      </div>
+
       <footer class="col col-auto mt-auto py-2">
         <a class="nav-link" href="https://github.com/JimmyBenKlieve" target="_blank" title="github" data-toggle="tooltip">
           <i class="fa fa-github"></i>
@@ -145,7 +178,7 @@
           <i class="fa fa-twitter"></i>
         </a>
         <a class="nav-link" href="http://music.163.com/#/artist?id=12038288" target="_blank" title="NetEase Music" data-toggle="tooltip">
-          网易云音乐
+          <i class="iconfont icon-netease-music"></i>
         </a>
       </footer>
     </nav>
@@ -225,6 +258,10 @@
 
     <script src="./js/script.js"></script>
     <script src="./js/music-player.js"></script>
-    <script src="./js/suzhi-calc.js"></script>
+
+    <!-- mini games -->
+    <script src="./js/minigames/2048.js"></script>
+
+    <script src="./js/misc/suzhi-calculator.js"></script>
   </body>
 </html>
