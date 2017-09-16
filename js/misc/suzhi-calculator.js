@@ -109,6 +109,7 @@
                 minWidth: 480,
                 minHeight: 0,
                 resize: false,
+                singleton: true,
             };
         }
 

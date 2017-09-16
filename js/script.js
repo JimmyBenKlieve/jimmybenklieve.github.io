@@ -144,12 +144,12 @@
                 height = 240,
                 minWidth = 220,
                 minHeight = 140,
-                isSingleton = false,
+                singleton = false,
                 resize = true,
             } = Object.assign({}, AppClass && (AppClass.defaults || {}), o);
 
-            if (isSingleton) {
-                let _search = containers.find((c) => c.appInstance.connstructor === AppClass);
+            if (singleton) {
+                let _search = Object.values(containers).find((c) => c.appInstance.constructor === AppClass);
                 if (_search) {
                     _search.focus();
                     throw new Error('Cannot create app instance because it can only run one instance at the same time.');
