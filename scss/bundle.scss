@@ -2,6 +2,8 @@ $font-base:                 "New Cicle Gordita", -apple-system, system-ui, Blink
 $font-base-semi:            "New Cicle Semi", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-base-light:           "New Cicle Fina", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
+$body-color:                #292b2c;
+
 $color:                     #cb3340;
 
 $color-light:               lighten($color, 5%);
@@ -19,4 +21,5 @@ $color-inverse: white;
 @import "icon";
 @import "musicbox";
 
-@import "misc/_suzhi-calculator";
+@import "./misc/suzhi-calculator";
+@import "./minigames/2048";

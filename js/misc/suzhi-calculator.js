@@ -113,8 +113,8 @@
             };
         }
 
-        constructor ($windowClient) {
-            this.$windowClient = $windowClient;
+        constructor (container) {
+            let $windowClientArea = container.$windowClientArea;
 
             let $nameInput = $('<input>', {
                 class: 'form-control',
@@ -136,7 +136,7 @@
                 $resultDisplay.val(_result);
             });
 
-            this.$windowClient.append(
+            $windowClientArea.append(
                 $('<div>', { class: 'input-group' }).append([
                     $nameInput,
                     $('<span>', { class: 'input-group-btn' }).append($calcButton),

@@ -1,4 +1,24 @@
 (($) => {
+    $.fn.transition = function (transitionName = '') {
+        this
+        .addClass('transition-from transition-active')
+        .addClass(transitionName);
+
+        requestAnimationFrame(() => {
+            this
+            .removeClass('transition-from')
+            .addClass('transition-to');
+        })
+
+        this.one('transitionend animationend', () => {
+            this
+            .removeClass('transition-active transition-to')
+            .removeClass(transitionName);
+        });
+    }
+})(jQuery);
+
+(($) => {
     requestAnimationFrame(function TweenAnimation () {
         requestAnimationFrame(TweenAnimation);
         TWEEN.update();
@@ -131,7 +151,6 @@
             this._isMoving = false;
             this._isFocused = true;
             this._isMaximized = false;
-
             this._isResizable = true;
 
             this.id = `app-instance-${ md5((new Date()).toISOString() + Date.now()) }`
@@ -142,10 +161,10 @@
                 left = 120,
                 width = 320,
                 height = 240,
-                minWidth = 220,
-                minHeight = 140,
-                singleton = false,
+                minWidth = 0,
+                minHeight = 0,
                 resize = true,
+                singleton = false,
             } = Object.assign({}, AppClass && (AppClass.defaults || {}), o);
 
             if (singleton) {
@@ -298,9 +317,8 @@
 
             this.pullFront();
             this.focus();
-            this._transition('init');
 
-            this.appInstance = new AppClass(this.$windowClientArea);
+            this.$window.transition('init');
 
             height = this.$windowTitlebar.height() + height;
             minWidth = Math.max($windowCommandButtonGroup.width(), minWidth);
@@ -311,6 +329,8 @@
                 minWidth,
                 minHeight,
             });
+
+            this.appInstance = new AppClass(this);
         }
 
         maximize () {
@@ -320,9 +340,11 @@
         destroy () {
             this.$window.one('transitionend animationend', () => {
                 this.$window.remove();
+                this.appInstance.destroy();
+                Reflect.deleteProperty(containers, this._PID);
             });
 
-            this._transition('destroy');
+            this.$window.transition('destroy');
         }
 
         blur () {

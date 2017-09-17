@@ -193,6 +193,7 @@ hr {
     flex-direction: column;
     border: 1px solid $color-darker;
     box-shadow: 0 2px 8px darken($color-darkest, 5%);
+    color: $body-color;
     background-color: #fff;
     transition: 140ms ease-in-out;
     transition-property: opacity;
@@ -313,7 +314,7 @@ hr {
         }
     }
 
-    &[resizer="both"] {
+    &[resize="both"] {
         & > .window-resizers {
             .resizer-n { cursor: n-resize; }
             .resizer-s { cursor: s-resize; }
@@ -336,6 +337,7 @@ hr {
         height: 2rem;
         font-size: 1rem;
 
+        color: #fff;
         background-color: $color-lightest;
         user-select: none;
         cursor: default;
