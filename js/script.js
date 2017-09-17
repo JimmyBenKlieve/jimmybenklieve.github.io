@@ -339,8 +339,11 @@
 
         destroy () {
             this.$window.one('transitionend animationend', () => {
+                if ($.isFunction(this.appInstance.destroy)) {
+                    this.appInstance.destroy();
+                }
+
                 this.$window.remove();
-                this.appInstance.destroy();
                 Reflect.deleteProperty(containers, this._PID);
             });
 
