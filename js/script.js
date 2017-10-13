@@ -359,6 +359,7 @@
             Object.values(containers).forEach((c) => c.blur());
 
             this._isFocused = true;
+            this.pullFront();
             this.$window.addClass('is-focused');
         }
 

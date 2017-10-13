@@ -339,8 +339,11 @@
 
         destroy () {
             this.$window.one('transitionend animationend', () => {
+                if ($.isFunction(this.appInstance.destroy)) {
+                    this.appInstance.destroy();
+                }
+
                 this.$window.remove();
-                this.appInstance.destroy();
                 Reflect.deleteProperty(containers, this._PID);
             });
 
@@ -356,6 +359,7 @@
             Object.values(containers).forEach((c) => c.blur());
 
             this._isFocused = true;
+            this.pullFront();
             this.$window.addClass('is-focused');
         }
 

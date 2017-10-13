@@ -145,6 +145,10 @@
             )
             .addClass('app-suzhi-calculator');
         }
+
+        destroy () {
+
+        }
     }
 
     window._registerApp(SuzhiCalculator);
