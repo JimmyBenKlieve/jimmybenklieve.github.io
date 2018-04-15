@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="css/bundle.min.css">
   </head>
+  <!--
   <body class="container-fluid">
     <svg class="background" xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1366 768"
@@ -219,7 +220,6 @@
 
             <polyline points="39,12 48,12 48,10"></polyline>
 
-              <!-- .xyz -->
             <circle cx="51" cy="11.5" r="0.5"></circle>
 
             <polyline points="54,0 63,9"></polyline>
@@ -245,10 +245,14 @@
         </small>
       </div>
     </footer>
+    -->
 
     <!-- cdnjs
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
-    -->
+  -->
+
+  <body class="d-flex justify-content-center align-items-center">
+    <pre id="text" class="blinking">&nbsp;</pre>
 
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
     <script src="http://cdn.bootcss.com/tether/1.4.0/js/tether.min.js"></script>
@@ -256,16 +260,65 @@
     <script src="http://cdn.bootcss.com/audio5js/0.1.10/audio5.min.js"></script>
     <script src="http://cdn.bootcss.com/tween.js/r14/Tween.js"></script>
     <script src="http://cdn.bootcss.com/color-js/1.0.1/color.min.js"></script>
+    <script src="http://cdn.bootcss.com/velocity/2.0.2/velocity.min.js"></script>
 
     <script src="./js/md5.min.js"></script>
     <script src="./js/ua-detect.js"></script>
 
     <script src="./js/script.js"></script>
+    <!--
     <script src="./js/music-player.js"></script>
+    -->
 
     <!-- mini games -->
     <script src="./js/minigames/2048.js"></script>
 
+    <!--
     <script src="./js/misc/suzhi-calculator.js"></script>
+    -->
   </body>
+
+  <style>
+    html, body {
+      background-color: #000;
+      transition: background-color 1s .3s ease-in-out;
+    }
+
+    #text {
+      overflow: visible;
+
+      font-family: "New Cicle Gordita";
+      font-size: 48px;
+      line-height: 1.2;
+
+      color: #fff;
+      mix-blend-mode: difference;
+    }
+
+    #text::after {
+      content: " ";
+      display: inline-block;
+      width: .05em;
+      height: 1em;
+      line-height: 1em;
+      vertical-align: middle;
+
+      visibility: hidden;
+      background-color: currentColor;
+    }
+
+    #text.blinking::after {
+      visibility: visible;
+      animation: blink 1s linear infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      49% { opacity: 1;}
+      50% { opacity: 0; }
+      99% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+  </style>
 </html>

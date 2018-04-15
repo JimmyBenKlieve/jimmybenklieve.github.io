@@ -505,3 +505,38 @@
         return -1;
     };
 })(jQuery);
+
+(($) => {
+    const text = 'It is under construction...\n\nComing soon!\n;)';
+    const $text = $('#text');
+
+    function _printTextSequence (pos) {
+        const char = text.charAt(pos);
+
+        if (!char || pos >= text.length) {
+            setTimeout(() => $text.removeClass('blinking'), Math.random() * 300 + 2700);
+            return;
+        }
+
+        let timeout = Math.random() * (260 - 88) + 88;
+
+        if (char === ' ') {
+            timeout = Math.random() * 100 + 300;
+        }
+        else if (char === '.') {
+            timeout = Math.random() * 150 + 450;
+        }
+        else if (char === '\n') {
+            timeout = Math.random() * 300 + 750;
+        }
+
+        setTimeout(() => {
+            $text.text(text.substr(0, pos + 1));
+            _printTextSequence(pos + 1);
+        }, timeout);
+    }
+
+    setTimeout(() => {
+        _printTextSequence(0);
+    }, Math.random() * 200 + 1000)
+})(jQuery);
