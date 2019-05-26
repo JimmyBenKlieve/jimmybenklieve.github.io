@@ -1,0 +1,33 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "react",
+    "import",
+    "jsx-a11y"
+  ],
+  "extends": [
+    "airbnb",
+    "react-app"
+  ],
+  "rules": {
+    "quotes": ["error", "single"],
+    "brace-style": ["error", "stroustrup"],
+
+    "react/jsx-filename-extension": ["error", { "extensions": ["js", "jsx"] }],
+
+    "import/first": ["error", "absolute-first"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
