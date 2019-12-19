@@ -18,11 +18,13 @@
     "react-app"
   ],
   "rules": {
-    "quotes": ["error", "single"],
+    "arrow-parens": ["error", "always"],
     "brace-style": ["error", "stroustrup"],
+    "quotes": ["error", "single"],
 
+    "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
     "react/jsx-filename-extension": ["error", { "extensions": ["js", "jsx"] }],
-
+    "react/prop-types": ["error", { "ignore": ["children", "className", "style"] }],
     "import/first": ["error", "absolute-first"]
   },
   "settings": {

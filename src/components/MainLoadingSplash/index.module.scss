@@ -1,0 +1,67 @@
+.loadingSplash {
+  opacity: .5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  overflow: hidden;
+
+  transition: all 5s ease-in-out;
+
+  &.isLeaving {
+    top: -45.5vh;
+    height: 145.5vh;
+  }
+
+  .page {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 100%;
+
+    .leftWall {
+      flex: 0 0 auto;
+      width: 16vw;
+      height: 200%;
+      background-color: #404040;
+      transform: skewY(30deg) translateY(480px);
+      transform-origin: top right;
+    }
+
+    .rightWall {
+      flex: 1 1 auto;
+      height: 200%;
+      background-color: #d9d9d9;
+      transform: skewY(-30deg) translateY(480px);
+      transform-origin: top left;
+    }
+
+    .text {
+      z-index: 2;
+      transform: translate(320px, 367px) skewY(-30deg) scale(1, 2);
+      transition: transform 2s ease-in;
+
+      &,
+      &Shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 1;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 64px;
+        user-select: none;
+        transform-origin: left bottom;
+        cursor: default;
+      }
+
+      &Shadow {
+        z-index: 1;
+        color: #d9d9d9;
+        transform: translate(340px, 358px) skew(60deg, -30deg) scaleY(1.25);
+      }
+    }
+  }
+}

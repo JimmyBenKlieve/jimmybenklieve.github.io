@@ -10,6 +10,10 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@rooks/use-mouse": "^3.0.1",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "rc-animate": "^2.8.2",
     "rc-banner-anim": "^2.2.6",
     "rc-queue-anim": "^1.6.12",
