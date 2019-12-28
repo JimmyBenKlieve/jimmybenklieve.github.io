@@ -78,13 +78,13 @@ function HomePage(props) {
         </p>
 
         <p className={styles.rules}>
-          Each composer has 2 weeks to finish his own segment which lasts for around 30 seconds. No
-          limitations on genre and BPM.
+          Each composer has 2 weeks to finish his own segment which lasts for at least 30 seconds.
+          No limitations on genre and BPM.
         </p>
 
         <ol>
           {SCHEDULE.map((l) => (
-            <li>
+            <li className={styles[l.status] || ''}>
               <span data-text={l.name}>{l.name}</span>
               {do {
                 if (l.activeDate) {
@@ -99,27 +99,6 @@ function HomePage(props) {
               }}
             </li>
           ))}
-          <li>
-            <span data-text="Linear Acceleration">Linear Acceleration</span>
-            <div className={styles.activeDate}>9 Dec. ~ 22 Dec.</div>
-          </li>
-          <li className={styles.current}>
-            <span>iD&apos;List</span>
-            <div className={styles.activeDate}>23 Dec. ~ 5 Jan.</div>
-          </li>
-
-          <li>Villax</li>
-          <li>UN1C0DE</li>
-          <li>VeetaCrush</li>
-          <li>BlueWind</li>
-          <li>NceS</li>
-          <li>Woolroll</li>
-          <li>Blumia</li>
-          <li>Supa7onyz</li>
-          <li>2jjy</li>
-          <li>Flasthond</li>
-          <li>rmk</li>
-          <li>Whisper</li>
         </ol>
       </div>
     </div>
