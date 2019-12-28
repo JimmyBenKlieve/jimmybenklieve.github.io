@@ -1,11 +1,12 @@
 import React from 'react';
+import MainSubLayout from 'layouts/MainSubLayout';
 
 import styles from './Home.module.scss';
 
 function HomePage(props) {
   return (
-    <div className={styles.page}>
-      <div className={styles.content}>
+    <MainSubLayout>
+      <div className={styles.page}>
         <div className={styles.content}>
           <div className={styles.logo}>
             <img src="i/logo-191201-black-anaglyphic.png" alt="logo" />
@@ -24,14 +25,14 @@ function HomePage(props) {
           </p>
 
           <p>
-            Nothing much here for now, but I&apos;ll add something fun and useful tools when I have
-            spare time.
+            Nothing much here for now, but I&apos;ll add something fun and
+            useful tools when I have spare time.
           </p>
 
           <p>:P</p>
         </div>
       </div>
-    </div>
+    </MainSubLayout>
   );
 }
 

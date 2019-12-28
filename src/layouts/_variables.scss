@@ -1,0 +1,9 @@
+@import 'node_modules/mathsass/dist/math';
+
+$topOffset: 112px;
+$leftOffset: 96px;
+
+$skewDeg: 30deg;
+
+$topWallWidth: $leftOffset / cos($skewDeg) + $topOffset / cos(90deg - $skewDeg);
+$topWallHeight: $leftOffset * 2;

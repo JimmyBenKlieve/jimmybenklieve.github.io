@@ -1,7 +1,5 @@
 @import 'node_modules/mathsass/dist/math';
-
-$topOffset: 112px;
-$leftWallWidth: 96px;
+@import './variables';
 
 .page {
   position: relative;
@@ -21,15 +19,15 @@ $leftWallWidth: 96px;
 }
 
 .topWall {
-  z-index: 1;
+  z-index: 10;
   position: absolute;
   left: 0;
   top: $topOffset;
   padding: 6px 12px;
-  width: $leftWallWidth / cos(30deg) + $topOffset / cos(60deg);
-  height: $leftWallWidth * 2;
+  width: $topWallWidth;
+  height: $topWallHeight;
   color: rgba(#000, 0.1);
-  transform: rotate(-30deg) skewX(30deg) translateY(-$leftWallWidth);
+  transform: rotate(-$skewDeg) skewX($skewDeg) translateY(-$topWallHeight / 2);
   transform-origin: left top;
   user-select: none;
   background-color: #fff;
@@ -56,8 +54,6 @@ $leftWallWidth: 96px;
       padding: 0;
       width: 100%;
       outline: 0;
-      overflow-x: scroll;
-      overflow-y: hidden;
 
       &::-webkit-scrollbar {
         width: 8px;
@@ -117,23 +113,24 @@ $leftWallWidth: 96px;
 }
 
 .leftWall {
+  z-index: 1;
   position: relative;
   overflow: hidden;
   flex: 0 0 auto;
-  width: $leftWallWidth;
+  width: $leftOffset;
   height: 100%;
   cursor: default;
   user-select: none;
 
   .titleShadow {
     position: absolute;
-    top: $topOffset + $leftWallWidth * tan(30deg);
+    top: $topOffset + $leftOffset * tan($skewDeg);
     right: 0;
     line-height: 0.75;
     white-space: nowrap;
     font-size: 64px;
     color: rgba(#000, 0.25);
-    transform: translateX(0.05em) rotate(-90deg) skewX(-30deg) scale(1.5, 3)
+    transform: translateX(0.05em) rotate(-90deg) skewX(-$skewDeg) scale(1.5, 3)
       translate(0.25em, 0.04em);
     transform-origin: right bottom;
   }
@@ -147,22 +144,23 @@ $leftWallWidth: 96px;
     width: 100%;
     height: 100%;
     background-color: #404040;
-    transform: translateY($topOffset) skewY(30deg);
+    transform: translateY($topOffset) skewY($skewDeg);
     transform-origin: 0 top;
   }
 }
 
 .rightWall {
+  z-index: 2;
   position: relative;
   overflow: hidden;
   flex: 1 1 auto;
   height: 100%;
 
-  .content {
+  .contentWrapper {
     font-size: 24px;
     text-shadow: 1px 2px 0 rgba(#000, 0.15);
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
 
   &::before {
@@ -174,7 +172,7 @@ $leftWallWidth: 96px;
     width: 100%;
     height: 100%;
     background-color: #d9d9d9;
-    transform: translateY($topOffset) skewY(-30deg);
+    transform: translateY($topOffset) skewY(-$skewDeg);
     transform-origin: right top;
   }
 
@@ -187,7 +185,7 @@ $leftWallWidth: 96px;
     width: 100%;
     height: 100vw;
     background-color: #d9d9d9;
-    transform: translateY($topOffset) skewY(-30deg);
-    transform-origin: $leftWallWidth top;
+    transform: translateY($topOffset) skewY(-$skewDeg);
+    transform-origin: $leftOffset top;
   }
 }

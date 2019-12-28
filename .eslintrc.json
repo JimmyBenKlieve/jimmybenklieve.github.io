@@ -18,6 +18,7 @@
     "react-app"
   ],
   "rules": {
+    "max-len": ["off"],
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "stroustrup"],
     "quotes": ["error", "single"],
