@@ -2,9 +2,11 @@ language: node_js
 node_js: stable
 
 script:
+  - yarn
+  - yarn build
 
 after_script:
-  - cd ./public
+  - cd ./build
   - git init
   - git config user.name "JimmyBenKlieve"
   - git config user.email "j.b.klieve@live.cn"
