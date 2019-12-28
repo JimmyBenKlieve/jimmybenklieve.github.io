@@ -21,10 +21,11 @@
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "stroustrup"],
     "quotes": ["error", "single"],
+    "no-unused-expressions": ["off"],
 
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
     "react/jsx-filename-extension": ["error", { "extensions": ["js", "jsx"] }],
-    "react/prop-types": ["error", { "ignore": ["children", "className", "style"] }],
+    "react/prop-types": ["off"],
     "import/first": ["error", "absolute-first"]
   },
   "settings": {

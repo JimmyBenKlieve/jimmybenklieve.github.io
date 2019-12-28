@@ -5,9 +5,7 @@ import classNames from 'classnames';
 import styles from './index.module.scss';
 
 const MainLoadingSplash = (props) => {
-  const {
-    onEnd,
-  } = props;
+  const { onEnd = null } = props;
 
   const [isEnd, setEnd] = React.useState(false);
 
@@ -17,28 +15,19 @@ const MainLoadingSplash = (props) => {
 
   return (
     <div
-      className={classNames(
-        styles.loadingSplash,
-        { [styles.isLeaving]: isEnd },
-      )}
-      onTransitionEnd={console.log}
+      className={classNames(styles.loadingSplash, { [styles.isLeaving]: isEnd })}
+      onTransitionEnd={onEnd}
     >
       <div className={styles.page}>
         <div className={styles.leftWall} />
         <div className={styles.rightWall} />
 
-        <div className={styles.text}>
-          Please wait a moment...
-        </div>
+        <div className={styles.text}>Please wait a moment...</div>
 
-        <div
-          className={styles.textShadow}
-        >
-          Please wait a moment...
-        </div>
+        <div className={styles.textShadow}>Please wait a moment...</div>
       </div>
     </div>
   );
-}
+};
 
 export default MainLoadingSplash;

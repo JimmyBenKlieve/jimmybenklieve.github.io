@@ -1,0 +1,24 @@
+language: node_js
+node_js: stable
+
+before_script:
+  - wget "http://music.163.com/api/playlist/detail?id=427756070" -O "./public/music-list.json"
+
+script:
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "JimmyBenKlieve"
+  - git config user.email "j.b.klieve@live.cn"
+  - git add .
+  - git commit -m "update website"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+
+branches:
+  only:
+    - source
+
+env:
+  global:
+    - GH_REF: "github.com/JimmyBenKlieve/jimmybenklieve.github.io.git"

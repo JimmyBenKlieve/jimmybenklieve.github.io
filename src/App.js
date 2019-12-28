@@ -1,18 +1,15 @@
 import React from 'react';
 import {
-  HashRouter as Router,
-  Route,
-  Switch,
-  Redirect,
+  HashRouter as Router, Route, Switch, Redirect,
 } from 'react-router-dom';
 
-import MainLoadingSplash from './components/MainLoadingSplash';
+// import MainLoadingSplash from './components/MainLoadingSplash';
 
 import HomePage from './pages/Home';
-import styles from './App.module.scss';
+// import styles from './App.module.scss';
 
 function App() {
-  const loadingEnded = React.useState(false);
+  // const loadingEnded = React.useState(false);
 
   return (
     <Router>

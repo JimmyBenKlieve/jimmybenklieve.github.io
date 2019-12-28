@@ -7,7 +7,7 @@
   font-family: 'Acre Medium', sans-serif;
   font-size: 24px;
   line-height: 1.5;
-  color: rgba(#fff, .96);
+  color: rgba(#fff, 0.96);
   background: linear-gradient(165deg, #242627, #121415);
 
   .box {
@@ -17,13 +17,13 @@
   }
 
   .host {
-    color: rgba(#fff, .66);
+    color: rgba(#fff, 0.66);
     margin-bottom: 16px;
   }
 
   .title {
     font-size: 2.5em;
-    line-height: .6;
+    line-height: 0.6;
     margin-bottom: 48px;
     white-space: pre;
 
@@ -32,7 +32,7 @@
     }
 
     > :nth-child(2) {
-      margin-left: .5em;
+      margin-left: 0.5em;
     }
 
     > :nth-child(3) {
@@ -52,7 +52,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       display: table;
       clear: both;
     }
@@ -66,7 +66,7 @@
 
   .rules {
     &::before {
-      content: "Rules:";
+      content: 'Rules:';
       display: block;
       font-size: 1.1em;
       font-weight: bold;
@@ -78,33 +78,60 @@
     font-family: 'Acre Medium', sans-serif;
 
     li {
+      position: relative;
       margin-bottom: 8px;
 
+      &,
+      > .activeDate {
+        color: rgba(#5ee728, 0.5);
+      }
+
+      .activeDate {
+        line-height: 1;
+        font-size: 18px;
+      }
+
+      &::before {
+        content: 'done!';
+
+        position: absolute;
+        top: 0.465em;
+        right: calc(100% + 2em);
+
+        color: currentColor;
+        font-size: 20px;
+        white-space: nowrap;
+      }
+
       &.current {
-        position: relative;
-        color: #50abf7;
+        &,
+        > .activeDate {
+          color: #fff;
+        }
 
         &::before {
-          content: "currently at ->";
-          position: absolute;
-          top: .5em;
-          right: calc(100% + 2em);
-          color: currentColor;
-          font-size: 18px;
-          white-space: nowrap;
+          content: 'currently at';
         }
 
         ~ li {
-          color: rgba(#fff, .33);
+          color: rgba(#fff, 0.33);
+
+          &::before {
+            display: none !important;
+          }
         }
       }
-    }
 
+      &.skipped {
+        &,
+        > .activeDate {
+          color: #f72c58;
+        }
 
-    .activeDate {
-      color: #fff;
-      line-height: 1;
-      font-size: 18px;
+        &::before {
+          content: 'skipped';
+        }
+      }
     }
   }
 }
