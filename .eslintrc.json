@@ -26,7 +26,9 @@
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
     "react/jsx-filename-extension": ["error", { "extensions": ["js", "jsx"] }],
     "react/prop-types": ["off"],
-    "import/first": ["error", "absolute-first"]
+    "import/first": ["error", "absolute-first"],
+    "import/no-unresolved": ["off"],
+    "import/extensions": ["off"]
   },
   "settings": {
     "react": {
