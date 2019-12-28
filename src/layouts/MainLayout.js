@@ -1,5 +1,7 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import {
+  Route, Link, Switch, Redirect,
+} from 'react-router-dom';
 import DocumentTitle from 'components/DocumentTitle';
 
 import classNames from 'classnames';
@@ -69,6 +71,7 @@ function MainLayout(props) {
               {NAVLIST.filter((n) => n.component).map((n) => (
                 <Route key={n.to} path={n.to} component={n.component} exact />
               ))}
+              <Redirect to="/" />
             </Switch>
           </div>
         </div>
