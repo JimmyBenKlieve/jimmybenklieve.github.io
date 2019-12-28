@@ -5,8 +5,7 @@
   "scripts": {
     "format": "prettier-eslint \"src/**/*.{js,jsx,css,scss,less,md}\" --write",
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "build": "node scripts/build.js"
   },
   "dependencies": {
     "@babel/core": "7.4.3",
