@@ -8,19 +8,12 @@
   white-space: pre;
   display: inline-block;
 
-  .leaving {
-    display: none;
-    position: absolute;
-    display: inline-block;
-
-    ~ .leaving {
-      display: none !important;
-    }
+  .placeholder {
+    opacity: 0;
   }
 
-  .leaving + *,
-  .entering {
-    display: inline-block;
+  > :not(.placeholder) {
+    position: absolute;
     left: 0;
   }
 

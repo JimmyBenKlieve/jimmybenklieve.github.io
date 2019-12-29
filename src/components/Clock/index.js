@@ -30,26 +30,13 @@ function Clock(props) {
 
   const elements = React.useMemo(() => {
     const [MMM, DD, Do, YYYY, HH, mm, ss] = now
-      .format('MMM DD Do YYYY HH mm ss')
+      .format('MMM. DD Do YYYY HH mm ss')
       .split(' ');
 
     const ord = Do.slice(DD.length);
     let spCount = 0;
 
-    return [
-      MMM,
-      ' ',
-      ...DD,
-      ord,
-      ' ',
-      ...YYYY,
-      ' ',
-      ...HH,
-      ':',
-      ...mm,
-      ':',
-      ...ss,
-    ]
+    return [MMM, ' ', ...DD, ord, ' ', ...YYYY, ' ', ...HH, ':', ...mm, ':', ...ss]
       .reverse()
       .map((c, i, a) => {
         if (CHAR_CLASSNAMES[c]) {
@@ -78,18 +65,18 @@ function Clock(props) {
             delay={(i - spCount) * 50}
             appear={false}
             ease="easeOutCubic"
-            animatingClassName={[styles.entering, styles.leaving]}
             animConfig={[
               {
                 y: [0, 12],
                 opacity: [1, 0],
               },
               {
-                y: [0, -4],
+                y: [0, -8],
                 opacity: [1, 0],
               },
             ]}
           >
+            <span key="$" className={styles.placeholder}>{c}</span>
             <span key={c}>{c}</span>
           </QueueAnim>
         );
