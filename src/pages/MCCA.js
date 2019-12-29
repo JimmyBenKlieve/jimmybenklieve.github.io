@@ -76,7 +76,7 @@ function MCCAPage(props) {
           </p>
 
           <p className={styles.rules}>
-            Each composer has 2 weeks to finish his own segment which lasts for
+            Each composer has 2 weeks to finish his own fragment which lasts for
             at least 30 seconds. No limitations on genre and BPM.
           </p>
 

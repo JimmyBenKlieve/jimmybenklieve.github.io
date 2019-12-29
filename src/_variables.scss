@@ -1,0 +1,28 @@
+@import 'node_modules/mathsass/dist/math';
+
+/// @param {Color} $color - Main color to generate palette
+/// @param {Number} $percent [0%] - Color palette index, positive to fade white, negative to fade black;
+@function palette($color, $percent: 0%) {
+  @if ($percent == 0) {
+    @return $color;
+  } @else if ($percent > 0) {
+    @return mix(#fff, $color, $percent);
+  } @else {
+    @return mix(#000, $color, abs($percent));
+  }
+}
+
+$topOffset: 112px;
+$leftOffset: 96px;
+
+$skewDeg: 30deg;
+
+$topWallWidth: $leftOffset / cos($skewDeg) + $topOffset / cos(90deg - $skewDeg);
+$topWallHeight: $leftOffset * 2;
+
+$accentColor: #f72c58;
+
+$faceColor0: #fff;
+$faceColor1: #f0f0f0;
+$faceColor2: #d4d4d4;
+$faceColor3: #404040;

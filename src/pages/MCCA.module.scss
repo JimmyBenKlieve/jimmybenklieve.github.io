@@ -1,7 +1,9 @@
+@import '../variables';
+
 .main {
   justify-content: center;
   width: 100%;
-  min-width: 1024px;
+  min-width: 760px;
   padding: 48px;
   overflow: auto;
   font-family: 'Acre Medium', sans-serif;
@@ -12,8 +14,7 @@
   text-shadow: none;
 
   .box {
-    width: 60%;
-    min-width: 680px;
+    width: 75%;
     margin: 0 auto;
   }
 
@@ -21,6 +22,7 @@
     color: rgba(#fff, 0.66);
     margin-bottom: 16px;
     text-align: right;
+    user-select: none;
   }
 
   .title {
@@ -28,6 +30,7 @@
     line-height: 0.6;
     margin-bottom: 48px;
     white-space: pre;
+    user-select: none;
 
     > :nth-child(1) {
       margin-left: 0;
@@ -50,6 +53,7 @@
 
       &::first-letter {
         color: #f72c58;
+        user-select: none;
       }
     }
 
@@ -93,12 +97,12 @@
         font-size: 18px;
       }
 
-      &::before {
+      &::after {
         content: 'done!';
 
         position: absolute;
         top: 0.465em;
-        right: calc(100% + 2.5em);
+        right: 0;
 
         color: currentColor;
         font-size: 20px;
@@ -111,14 +115,14 @@
           color: #fff;
         }
 
-        &::before {
-          content: 'currently at';
+        &::after {
+          content: 'wip';
         }
 
         ~ li {
           color: rgba(#fff, 0.33);
 
-          &::before {
+          &::after {
             display: none !important;
           }
         }
@@ -130,7 +134,7 @@
           color: #f72c58;
         }
 
-        &::before {
+        &::after {
           content: 'skipped';
         }
       }

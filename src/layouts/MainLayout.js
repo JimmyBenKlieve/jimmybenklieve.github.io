@@ -1,47 +1,24 @@
 import React from 'react';
 import {
-  Route, Link, Switch, Redirect,
+  Route,
+  Link,
+  Switch,
+  Redirect,
 } from 'react-router-dom';
 
 import DocumentTitle from 'components/DocumentTitle';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import ResizeObserver from 'rc-resize-observer';
+
+import Clock from 'components/Clock';
 
 import classNames from 'classnames';
-
-import HomePage from 'pages/Home';
-import MCCAPage from 'pages/MCCA';
+import router from '../router';
 
 import styles from './MainLayout.module.scss';
 
-const NAVLIST = [
-  {
-    to: '/',
-    text: 'Home',
-    component: HomePage,
-  },
-  {
-    to: '/mcca',
-    text: 'MCCA',
-    component: MCCAPage,
-  },
-  // {
-  //   to: '/events',
-  //   text: 'Events',
-  // },
-  // {
-  //   to: '/coding',
-  //   text: 'Coding',
-  // },
-  // {
-  //   to: '/gallery',
-  //   text: 'Gallery',
-  // },
-];
-
 function MainLayout(props) {
   const navScrollbarRef = React.useRef(null);
-  const currentNav = NAVLIST.find((x) => x.to === props.location.pathname);
+  const currentNav = router.find((x) => x.to === props.location.pathname);
 
   React.useEffect(() => {
     const tick = window.setTimeout(() => {
@@ -56,7 +33,6 @@ function MainLayout(props) {
       <div className={styles.page}>
         <div className={styles.topWall}>
           <div className={styles.nav}>
-            <h1>Navigation</h1>
             <PerfectScrollbar
               ref={navScrollbarRef}
               options={{
@@ -65,7 +41,7 @@ function MainLayout(props) {
               }}
             >
               <ul className={styles.navlist}>
-                {NAVLIST.map((n) => (
+                {router.map((n) => (
                   <li
                     key={`${n.to}.${n.text}`}
                     className={classNames(n.className, styles.navitem, {
@@ -82,17 +58,26 @@ function MainLayout(props) {
         </div>
 
         <div className={styles.leftWall}>
-          <span className={styles.titleShadow}>Welcome to UN1C0DE.XYZ</span>
+          <Clock className={styles.clock} />
         </div>
 
         <div className={styles.rightWall}>
           <div className={styles.contentWrapper}>
-            <Switch>
-              {NAVLIST.filter((n) => n.component).map((n) => (
-                <Route key={n.to} path={n.to} component={n.component} exact />
-              ))}
-              <Redirect to="/" />
-            </Switch>
+            <React.Suspense fallback="loading...">
+              <Switch>
+                {router
+                  .filter((n) => n.component)
+                  .map((n) => (
+                    <Route
+                      key={n.to}
+                      path={n.to}
+                      component={n.component}
+                      exact={!!n.exact}
+                    />
+                  ))}
+                <Redirect to="/" />
+              </Switch>
+            </React.Suspense>
           </div>
         </div>
       </div>

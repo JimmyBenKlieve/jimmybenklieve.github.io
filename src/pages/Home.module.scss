@@ -1,9 +1,167 @@
+@import '../variables';
+
+.main {
+  font-family: 'Oswald', Impact, sans-serif;
+  font-weight: 300;
+}
+
+.sider {
+  $popoutOffset: 4px;
+
+  padding: 64px 76px 0;
+  font-weight: 400;
+  text-shadow: -2px -2px 0 rgba(#000, 0.15);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+    color: transparent;
+    text-shadow: 0 0 0 rgba(#000, 0.3), $popoutOffset $popoutOffset 0 #000;
+  }
+
+  .socialLinks {
+    user-select: none;
+
+    ul {
+      padding: 0;
+      list-style: none;
+      text-shadow: none;
+      font-size: 20px;
+      user-select: none;
+    }
+
+    li {
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      img {
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+        vertical-align: -0.12em;
+        display: inline-block;
+      }
+    }
+
+    a {
+      padding: 0.5em;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      text-decoration: none;
+      color: inherit;
+
+      height: 1.75em;
+
+      outline: 0;
+      border: 2px solid currentColor;
+      background-color: rgba(#000, 0.1);
+      border-radius: 24px;
+      filter: drop-shadow(0 0 0 rgba(#000, 0.3));
+      transition: all 140ms ease-out;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: $accentColor;
+        transform: translate($popoutOffset, $popoutOffset / cos($skewDeg));
+        background-color: rgba($accentColor, 0.25);
+        filter: drop-shadow(
+          -$popoutOffset (-$popoutOffset / cos($skewDeg)) 0 rgba($accentColor, 0.3)
+        );
+      }
+
+      &:active {
+        background-color: rgba($accentColor, 0.4);
+      }
+    }
+  }
+
+  .externalLinks {
+    $gutterSize: 4px;
+
+    user-select: none;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      list-style: none;
+      padding: 0;
+      margin: 0 (-$gutterSize) 1em (-$gutterSize);
+    }
+
+    li {
+      padding: 0 $gutterSize;
+      margin-bottom: $gutterSize;
+
+      img {
+        width: 1em;
+        height: 1em;
+      }
+    }
+
+    a {
+      box-sizing: content-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      font-size: 1.75em;
+      width: 1em;
+      height: 1em;
+      color: #000;
+      background-color: #fff;
+      transition: all 140ms ease-out;
+      border: 2px solid currentColor;
+      border-radius: 1em;
+      overflow: hidden;
+
+      &:hover,
+      &:focus {
+        color: #0c5bd1;
+        background-color: #fff;
+        transform: translate($popoutOffset, $popoutOffset);
+        box-shadow: -$popoutOffset (-$popoutOffset / cos($skewDeg)) 0
+          rgba(#0c5bd1, 0.3);
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 14px;
+    font-weight: 400;
+    text-shadow: none;
+  }
+}
+
+.logo {
+  margin-bottom: 1.5em;
+
+  > img {
+    display: block;
+    width: 144px;
+    height: 144px;
+    background-color: #2f2f2f;
+
+    box-shadow: -6px 8px 0 rgba(#000, 0.33);
+  }
+}
+
 .page {
   padding: 76px 48px;
   color: rgba(#000, 0.85);
-  font-family: 'Acre Medium', sans-serif;
-  font-size: 24px;
   line-height: 1.5;
+  font-size: 24px;
+  background-color: $faceColor1;
 
   .content {
     width: 50%;
@@ -11,22 +169,6 @@
     margin: 0 auto;
     padding: 24px 32px;
     line-height: 1.25;
-    font-family: 'Acre Medium', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-      'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-
-  .logo {
-    text-align: center;
-    margin-bottom: 2em;
-
-    > img {
-      display: block;
-      width: 144px;
-      height: 144px;
-      background-color: #2f2f2f;
-
-      box-shadow: -3px 8px 0 1px rgba(#000, 0.33);
-    }
   }
 
   .myIntro {
