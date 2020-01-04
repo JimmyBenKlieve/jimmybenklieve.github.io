@@ -3,6 +3,11 @@ import React from 'react';
 const router = [
   {
     to: '/',
+    redirect: '/home',
+    hideInMenu: true,
+  },
+  {
+    to: '/home',
     text: 'Home',
     component: React.lazy(() => import('./pages/Home')),
     exact: true,
@@ -10,7 +15,7 @@ const router = [
   {
     to: '/mcca',
     text: 'MCCA',
-    component: React.lazy(() => import('./pages/MCCA')),
+    component: React.lazy(() => import('./pages/MCCA/index')),
   },
   {
     to: '/games',

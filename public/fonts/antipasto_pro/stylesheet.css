@@ -16,14 +16,14 @@
 
 
 @font-face {
-    font-family: 'Antipasto Pro Demibold';
+    font-family: 'Antipasto Pro';
     src: url('antipastopro-demibold-webfont.eot');
     src: url('antipastopro-demibold-webfont.eot?#iefix') format('embedded-opentype'),
          url('antipastopro-demibold-webfont.woff2') format('woff2'),
          url('antipastopro-demibold-webfont.woff') format('woff'),
          url('antipastopro-demibold-webfont.ttf') format('truetype'),
          url('antipastopro-demibold-webfont.svg#antipasto_prodemibold') format('svg');
-    font-weight: normal;
+    font-weight: 600;
     font-style: normal;
 
 }

@@ -11,6 +11,9 @@ $leftWidth: $topWallWidth * cos($skewDeg);
 }
 
 .left {
+  z-index: 1;
+  position: absolute;
+  left: 0;
   width: $leftWidth;
   height: 100%;
 }

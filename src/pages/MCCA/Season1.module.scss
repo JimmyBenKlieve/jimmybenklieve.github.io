@@ -1,4 +1,6 @@
-@import '../variables';
+@import 'src/variables';
+
+$popoutOffset: 6px;
 
 .main {
   justify-content: center;
@@ -8,7 +10,7 @@
   padding: 48px;
   overflow-x: auto;
   overflow-y: scroll;
-  font-family: 'Acre Medium', sans-serif;
+  font-family: 'Acre', sans-serif;
   font-size: 24px;
   line-height: 1.5;
   color: rgba(#fff, 0.96);
@@ -78,7 +80,7 @@
 
   ol {
     font-size: 28px;
-    font-family: 'Acre Medium', sans-serif;
+    font-family: 'Acre', sans-serif;
 
     li {
       position: relative;

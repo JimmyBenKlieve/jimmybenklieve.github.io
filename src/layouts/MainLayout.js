@@ -19,7 +19,9 @@ import styles from './MainLayout.module.scss';
 
 function MainLayout(props) {
   const navScrollbarRef = React.useRef(null);
-  const currentNav = router.find((x) => x.to === props.location.pathname);
+  const currentNav = router
+    .filter((x) => !x.redirect)
+    .find((x) => props.location.pathname.startsWith(x.to));
 
   React.useEffect(() => {
     const tick = window.setTimeout(() => {
@@ -45,19 +47,22 @@ function MainLayout(props) {
                 className={styles.navlist}
                 componet="ul"
                 type="bottom"
-                duration={680}
+                duration={600}
                 interval={100}
               >
-                {router.map((n) => (
-                  <li
-                    key={`${n.to}.${n.text}`}
-                    className={classNames(n.className, styles.navitem, {
-                      [styles.active]: props.location.pathname === n.to,
-                    })}
-                  >
-                    <Link to={n.to}>{n.text}</Link>
-                  </li>
-                ))}
+                {router
+                  .filter((n) => !n.redirect && !n.hideInMenu)
+                  .map((n) => (
+                    <li
+                      key={`${n.to}.${n.text}`}
+                      className={classNames(n.className, styles.navitem, {
+                        [styles.active]: props.location.pathname.startsWith(n.to),
+                      })}
+                    >
+                      <Link to={n.to}>{n.text}</Link>
+                    </li>
+                  ))
+                }
                 <li className={styles.whitespace} />
               </QueueAnim>
             </PerfectScrollbar>
@@ -71,9 +76,9 @@ function MainLayout(props) {
         <div className={styles.rightWall}>
           <div className={styles.contentWrapper}>
             <React.Suspense fallback="loading...">
-              <Switch key="switch">
+              <Switch>
                 {router
-                  .filter((n) => n.component)
+                  .filter((n) => !n.redirect)
                   .map((n) => (
                     <Route
                       key={n.to}
@@ -81,7 +86,21 @@ function MainLayout(props) {
                       component={n.component}
                       exact={!!n.exact}
                     />
-                  ))}
+                  ))
+                }
+
+                {router
+                  .filter((n) => n.redirect)
+                  .map((n) => (
+                    <Redirect
+                      key={n.to}
+                      from={n.to}
+                      to={n.redirect}
+                      exact
+                    />
+                  ))
+                }
+
                 <Redirect to="/" />
               </Switch>
             </React.Suspense>

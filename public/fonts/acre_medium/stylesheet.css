@@ -16,14 +16,14 @@
 
 
 @font-face {
-    font-family: 'Acre Medium';
+    font-family: 'Acre';
     src: url('acre-medium-webfont.eot');
     src: url('acre-medium-webfont.eot?#iefix') format('embedded-opentype'),
          url('acre-medium-webfont.woff2') format('woff2'),
          url('acre-medium-webfont.woff') format('woff'),
          url('acre-medium-webfont.ttf') format('truetype'),
          url('acre-medium-webfont.svg#acremedium') format('svg');
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
 
 }
