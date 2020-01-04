@@ -18,25 +18,35 @@ const CHAR_CLASSNAMES = {
 function Clock(props) {
   const { className, ...restProps } = props;
 
-  const [now, setNow] = React.useState(moment());
+  const [now, setNow] = React.useState(Math.ceil(Date.now() / 1000));
 
   React.useEffect(() => {
-    const t = window.setInterval(() => {
-      setNow(moment());
-    }, 500);
+    let isRunning = true;
 
-    return () => window.clearInterval(t);
+    const tick = () => {
+      if (isRunning) {
+        setNow(Math.ceil(Date.now() / 1000));
+        window.requestAnimationFrame(tick);
+      }
+    };
+
+    window.requestAnimationFrame(tick);
+
+    return () => {
+      isRunning = false;
+    };
   }, []);
 
   const elements = React.useMemo(() => {
-    const [MMM, DD, Do, YYYY, HH, mm, ss] = now
-      .format('MMM. DD Do YYYY HH mm ss')
+    const [YYYY, MMM, D, Do, HH, mm, ss] = moment
+      .unix(now)
+      .format('YYYY MMM. D Do HH mm ss')
       .split(' ');
 
-    const ord = Do.slice(DD.length);
+    const ord = Do.slice(D.length);
     let spCount = 0;
 
-    return [MMM, ' ', ...DD, ord, ' ', ...YYYY, ' ', ...HH, ':', ...mm, ':', ...ss]
+    return [...YYYY, ' ', MMM, ' ', ...D, ord, ' ', ...HH, ':', ...mm, ':', ...ss]
       .reverse()
       .map((c, i, a) => {
         if (CHAR_CLASSNAMES[c]) {
@@ -75,8 +85,8 @@ function Clock(props) {
                 opacity: [1, 0],
               },
             ]}
+            data-char={c}
           >
-            <span key="$" className={styles.placeholder}>{c}</span>
             <span key={c}>{c}</span>
           </QueueAnim>
         );
@@ -84,7 +94,10 @@ function Clock(props) {
   }, [now]);
 
   return (
-    <div {...restProps} className={classNames(styles.clock, className)}>
+    <div
+      {...restProps}
+      className={classNames(styles.clock, className)}
+    >
       {elements}
     </div>
   );

@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 
+import QueueAnim from 'rc-queue-anim';
 import DocumentTitle from 'components/DocumentTitle';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
@@ -40,7 +41,13 @@ function MainLayout(props) {
                 suppressScrollY: true,
               }}
             >
-              <ul className={styles.navlist}>
+              <QueueAnim
+                className={styles.navlist}
+                componet="ul"
+                type="bottom"
+                duration={680}
+                interval={100}
+              >
                 {router.map((n) => (
                   <li
                     key={`${n.to}.${n.text}`}
@@ -52,7 +59,7 @@ function MainLayout(props) {
                   </li>
                 ))}
                 <li className={styles.whitespace} />
-              </ul>
+              </QueueAnim>
             </PerfectScrollbar>
           </div>
         </div>
@@ -64,7 +71,7 @@ function MainLayout(props) {
         <div className={styles.rightWall}>
           <div className={styles.contentWrapper}>
             <React.Suspense fallback="loading...">
-              <Switch>
+              <Switch key="switch">
                 {router
                   .filter((n) => n.component)
                   .map((n) => (

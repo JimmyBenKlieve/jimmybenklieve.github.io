@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import QueueAnim from 'rc-queue-anim';
+import TweenOne from 'rc-tween-one';
 
 import MainSubLayout from 'layouts/MainSubLayout';
 
@@ -15,10 +17,12 @@ const SCHEDULE = [
   {
     name: 'i\'DList',
     activeDate: [moment([2019, 12 - 1, 23]), moment([2020, 1 - 1, 5])],
-    status: 'current',
+    status: 'done',
   },
   {
     name: 'Villax',
+    activeDate: [moment([2020, 1 - 1, 6]), moment([2020, 1 - 1, 19])],
+    status: 'current',
   },
   {
     name: 'UN1C0DE',
@@ -58,48 +62,89 @@ const SCHEDULE = [
 function MCCAPage(props) {
   return (
     <MainSubLayout>
-      <div className={styles.main}>
-        <div className={styles.box}>
-          <div className={styles.host}>П&nbsp;&nbsp;Ш∀∃⊥</div>
+      <TweenOne
+        animation={{ opacity: 1, duration: 300 }}
+        style={{ opacity: 0 }}
+      >
+        <div className={styles.main}>
+          <QueueAnim
+            className={styles.box}
+            type="left"
+            duration={0}
+            interval={50}
+            delay={150}
+          >
+            <div
+              key="host"
+              className={styles.host}
+            >
+              П&nbsp;&nbsp;Ш∀∃⊥
+            </div>
 
-          <div className={styles.title}>
-            <div>Mega</div>
-            <div>Composer</div>
-            <div>Collaboration</div>
-            <div>Activity</div>
-            <div className={styles.season}>Season 1</div>
-          </div>
+            <QueueAnim
+              key="name"
+              className={styles.title}
+              type="bottom"
+              duration={500}
+              interval={50}
+            >
+              <div key="1">Mega</div>
+              <div key="2">Composer</div>
+              <div key="3">Collaboration</div>
+              <div key="4">Activity</div>
+              <div key="5" className={styles.season}>Season 1</div>
+            </QueueAnim>
 
-          <p className={styles.desc}>
-            14 amature music composers come together, what will happen if they
-            compose a giant single tune one by one?
-          </p>
+            <QueueAnim
+              key="rest"
+              type="left"
+              delay={250}
+              duration={500}
+              interval={50}
+            >
+              <p
+                key="description"
+                className={styles.desc}
+              >
+                14 amature music composers come together, what will happen if they
+                compose a giant single tune one by one?
+              </p>
 
-          <p className={styles.rules}>
-            Each composer has 2 weeks to finish his own fragment which lasts for
-            at least 30 seconds. No limitations on genre and BPM.
-          </p>
+              <h3 key="rules" className={styles.rules}>Rules:</h3>
+              <p key="rulesContent">
+                Each composer has 2 weeks to finish his own fragment which lasts for
+                about 30 seconds. No limitations on genre and BPM.
+              </p>
+            </QueueAnim>
 
-          <ol>
-            {SCHEDULE.map((l) => (
-              <li key={l.name} className={styles[l.status] || ''}>
-                <span data-text={l.name}>{l.name}</span>
-                {do {
-                  if (l.activeDate) {
-                    const [s, e] = l.activeDate;
+            <QueueAnim
+              key="entryMembers"
+              component="ol"
+              type="bottom"
+              delay={300}
+              duration={300}
+              interval={50}
+            >
+              {SCHEDULE.map((l) => (
+                <li key={l.name} className={styles[l.status] || ''}>
+                  <span data-text={l.name}>{l.name}</span>
+                  {do {
+                    if (l.activeDate) {
+                      const [s, e] = l.activeDate;
 
-                      <div className={styles.activeDate}>
-                        <span>{s.format('D MMM.')}</span>
-                        <span> ~ </span>
-                        <span>{e.format('D MMM.')}</span>
-                      </div>;
-                  }
-                }}
-              </li>
-            ))}
-          </ol>
+                        <div className={styles.activeDate}>
+                          <span>{s.format('D MMM.')}</span>
+                          <span> ~ </span>
+                          <span>{e.format('D MMM.')}</span>
+                        </div>;
+                    }
+                  }}
+                </li>
+              ))}
+            </QueueAnim>
+          </QueueAnim>
         </div>
-      </div>
+      </TweenOne>
     </MainSubLayout>
   );
 }

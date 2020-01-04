@@ -4,8 +4,10 @@
   justify-content: center;
   width: 100%;
   min-width: 760px;
+  height: 100vh;
   padding: 48px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: scroll;
   font-family: 'Acre Medium', sans-serif;
   font-size: 24px;
   line-height: 1.5;
@@ -71,12 +73,7 @@
   }
 
   .rules {
-    &::before {
-      content: 'Rules:';
-      display: block;
-      font-size: 1.1em;
-      font-weight: bold;
-    }
+    margin-bottom: 0;
   }
 
   ol {
@@ -86,6 +83,7 @@
     li {
       position: relative;
       margin-bottom: 8px;
+      font-size: 1em;
 
       &,
       > .activeDate {
@@ -94,7 +92,7 @@
 
       .activeDate {
         line-height: 1;
-        font-size: 18px;
+        font-size: .65em;
       }
 
       &::after {
@@ -105,11 +103,13 @@
         right: 0;
 
         color: currentColor;
-        font-size: 20px;
+        font-size: .65em;
         white-space: nowrap;
       }
 
       &.current {
+        font-size: 1.25em;
+
         &,
         > .activeDate {
           color: #fff;

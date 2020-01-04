@@ -144,20 +144,19 @@
 }
 
 .logo {
+  display: block;
+  width: 144px;
+  height: 144px;
+  background-color: #2f2f2f;
+  box-shadow: -6px 8px 0 rgba(#000, 0.33);
   margin-bottom: 1.5em;
-
-  > img {
-    display: block;
-    width: 144px;
-    height: 144px;
-    background-color: #2f2f2f;
-
-    box-shadow: -6px 8px 0 rgba(#000, 0.25);
-  }
 }
 
 .page {
   padding: 76px 48px;
+  overflow-x: auto;
+  overflow-y: scroll;
+  min-height: 100vh;
   color: rgba(#000, 0.85);
   line-height: 1.5;
   font-size: 24px;
