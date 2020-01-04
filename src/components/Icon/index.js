@@ -11,13 +11,21 @@ const SCOPE_MAP = {
  * @param {{ scope?: keyof SCOPE_MAP, type: string }} props
  */
 function Icon(props) {
-  const { scope = 'solid', type, component: Component } = props;
+  const {
+    className,
 
-  if (Component) {
-    return <Component className="fa" />;
-  }
+    component: Component = 'i',
+    scope = 'solid',
+    type,
+    ...restProps
+  } = props;
 
-  return <i className={classNames(SCOPE_MAP[scope] || 'fas', `fa-${type}`)} />;
+  return (
+    <i
+      className={classNames(SCOPE_MAP[scope] || 'fas', `fa-${type}`, classNames)}
+      {...restProps}
+    />
+  );
 }
 
 export default Icon;

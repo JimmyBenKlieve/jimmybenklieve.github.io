@@ -3,6 +3,7 @@ import MainSubLayout from 'layouts/MainSubLayout';
 import QueueAnim from 'rc-queue-anim';
 import TextyAnim from 'rc-texty';
 import TweenOne from 'rc-tween-one';
+import moment from 'moment';
 
 import Icon from 'components/Icon';
 import ICON_NETEASE from 'assets/icon/netease-music.svg';
@@ -136,7 +137,30 @@ function HomePage(props) {
             key="copyright"
             className={styles.copyright}
           >
-            Jimmy Ben Klieve, (C) 1994 - 2019.
+            Jimmy Ben Klieve, (C) 1994 - {moment().year()}.
+          </p>
+
+          <p
+            key="cc"
+            className={styles.cc}
+          >
+            <Icon
+              scope="brand"
+              type="creative-commons-by"
+              title="Creative Commons: BY"
+            />
+
+            <Icon
+              scope="brand"
+              type="creative-commons-nc"
+              title="Creative Commons: NC"
+            />
+
+            <Icon
+              scope="brand"
+              type="creative-commons-nd"
+              title="Creative Commons: ND"
+            />
           </p>
         </QueueAnim>
       )}
