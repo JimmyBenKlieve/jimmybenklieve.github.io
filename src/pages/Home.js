@@ -37,12 +37,28 @@ const EXTERNAL_LINKS = [
   {
     href: 'https://1hz-music.fun/',
     icon: <img src="/i/1hz.svg" alt="" />,
-    text: '1Hz music',
+    text: '1Hz Music',
   },
   {
     href: 'https://idl.ist/',
     icon: <img src="/i/idlist.png" alt="" />,
     text: 'i\'DLisT',
+  },
+  {
+    href: 'https://music.163.com/#/artist?id=1094096',
+    icon: (
+      <img
+        src="/i/hazecat-logo-dark.png"
+        alt=""
+        style={{
+          width: '80%',
+          height: 'auto',
+          marginBottom: 4,
+          filter: 'brightness(0)',
+        }}
+      />
+    ),
+    text: 'HazeCat',
   },
 ];
 
