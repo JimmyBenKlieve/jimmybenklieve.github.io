@@ -13,7 +13,7 @@ const SCHEDULE = [
     bpm: 128,
   },
   {
-    name: 'i\'DList',
+    name: 'i\'DLisT',
     activeDate: [moment([2019, 12 - 1, 23]), moment([2020, 1 - 1, 5])],
     status: 'done',
   },

@@ -20,9 +20,18 @@ function Icon(props) {
     ...restProps
   } = props;
 
+  if (typeof Component !== 'string') {
+    return (
+      <Component
+        className={classNames('fa', className)}
+        {...restProps}
+      />
+    );
+  }
+
   return (
-    <i
-      className={classNames(SCOPE_MAP[scope] || 'fas', `fa-${type}`, classNames)}
+    <Component
+      className={classNames(SCOPE_MAP[scope] || 'fas', `fa-${type}`, className)}
       {...restProps}
     />
   );
