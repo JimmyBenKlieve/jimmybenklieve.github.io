@@ -8,22 +8,24 @@ import styles from './Season1.module.scss';
 const SCHEDULE = [
   {
     name: 'Linear Acceleration',
-    activeDate: [moment([2019, 12 - 1, 9]), moment([2019, 12 - 1, 22])],
+    activeDate: [moment([2019, 11, 9]), moment([2019, 11, 22])],
     status: 'done',
     bpm: 128,
   },
   {
     name: 'i\'DLisT',
-    activeDate: [moment([2019, 12 - 1, 23]), moment([2020, 1 - 1, 5])],
+    activeDate: [moment([2019, 11, 23]), moment([2020, 0, 5])],
     status: 'done',
   },
   {
     name: 'Villax',
-    activeDate: [moment([2020, 1 - 1, 6]), moment([2020, 1 - 1, 19])],
-    status: 'current',
+    activeDate: [moment([2020, 0, 6]), moment([2020, 0, 19])],
+    status: 'done',
   },
   {
     name: 'UN1C0DE',
+    activeDate: [moment([2020, 0, 20]), moment([2020, 1, 2])],
+    status: 'current',
   },
   {
     name: 'VeetaCrush',
