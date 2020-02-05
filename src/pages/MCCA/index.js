@@ -45,8 +45,7 @@ function MCCAPage(props) {
                     <div>First Contact</div>
                   </Link>
                 </div>
-              ))
-            }
+              ))}
           </QueueAnim>
         </aside>
       )}
