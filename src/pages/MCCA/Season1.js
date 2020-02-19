@@ -30,13 +30,17 @@ const SCHEDULE = [
   {
     name: 'VeetaCrush',
     activeDate: [moment([2020, 1, 3]), moment([2020, 1, 16])],
-    status: 'current',
+    status: 'done',
   },
   {
     name: 'BlueWind',
+    activeDate: [moment([2020, 1, 17]), moment([2020, 1, 18])],
+    status: 'done',
   },
   {
     name: 'NceS',
+    activeDate: [moment([2020, 1, 19]), moment([2020, 2, 4])],
+    status: 'current',
   },
   {
     name: 'AirComedist',
