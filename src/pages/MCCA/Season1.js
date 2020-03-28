@@ -67,6 +67,9 @@ const SCHEDULE = [
   {
     name: 'whisper',
   },
+  {
+    name: 'Yako',
+  },
 ];
 
 function MCCASeason1(props) {
@@ -134,7 +137,7 @@ function MCCASeason1(props) {
             key="entryMembers"
             component="ol"
             type="bottom"
-            delay={300}
+            delay={420}
             duration={300}
             interval={50}
           >
