@@ -120,15 +120,14 @@ function MCCASeason1(props) {
             </p>
 
             <h3 key="rules" className={styles.rules}>Rules:</h3>
-            <div key="rulesContent">
-              <p>
-                每个曲师通过聆听上一位曲师完成的片段来完成自己的片段。
-                片段长度不少于 30 秒，尽可能保证片段之间能够顺滑地过渡。
-              </p>
-              <p>
-                没有曲风限制，没有 BPM 限制。初始 BPM 已由第一位曲师确定为 128.
-              </p>
-            </div>
+            <p key="rulesContent">
+              每个曲师通过聆听上一位曲师完成的片段来完成自己的片段。
+              片段长度不少于 30 秒，尽可能保证片段之间能够顺滑地过渡。
+            </p>
+
+            <p key="rulesLimitations">
+              没有曲风限制，没有 BPM 限制。初始 BPM 已由第一位曲师确定为 128.
+            </p>
           </QueueAnim>
 
           <QueueAnim
@@ -149,7 +148,10 @@ function MCCASeason1(props) {
                       <div className={styles.activeDate}>
                         <span>{s.format('D MMM.')}</span>
                         <span> ~ </span>
-                        <span>{e.format('D MMM.')} （预估）</span>
+                        <span>
+                          {e.format('D MMM.')}
+                          {l.status === 'current' ? <span>（预计）</span> : ''}
+                        </span>
                       </div>;
                   }
                 }}
