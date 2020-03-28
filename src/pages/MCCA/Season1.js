@@ -39,14 +39,18 @@ const SCHEDULE = [
   },
   {
     name: 'NceS',
-    activeDate: [moment([2020, 1, 19]), moment([2020, 2, 4])],
-    status: 'current',
+    activeDate: [moment([2020, 1, 19]), moment([2020, 2, 16])],
+    status: 'done',
   },
   {
     name: 'AirComedist',
+    activeDate: [moment([2020, 2, 17]), moment([2020, 2, 27])],
+    status: 'done',
   },
   {
     name: 'Blumia',
+    activeDate: [moment([2020, 2, 28]), moment([2020, 3, 10])],
+    status: 'current',
   },
   {
     name: 'Supa7onyz',
@@ -111,15 +115,20 @@ function MCCASeason1(props) {
               key="description"
               className={styles.desc}
             >
-              14 amature music composers come together, what will happen if they
-              compose a giant single tune one by one?
+              终于凑齐了 14 个曲师，可以在一起搞事情了！初次尝试，看看能接个什么样子的龙？
+              <span role="img" aria-label="龙">🐉</span>
             </p>
 
             <h3 key="rules" className={styles.rules}>Rules:</h3>
-            <p key="rulesContent">
-              Each composer has 2 weeks to finish his own fragment which lasts for
-              about 30 seconds. No limitations on genre and BPM.
-            </p>
+            <div key="rulesContent">
+              <p>
+                每个曲师通过聆听上一位曲师完成的片段来完成自己的片段。
+                片段长度不少于 30 秒，尽可能保证片段之间能够顺滑地过渡。
+              </p>
+              <p>
+                没有曲风限制，没有 BPM 限制。初始 BPM 已由第一位曲师确定为 128.
+              </p>
+            </div>
           </QueueAnim>
 
           <QueueAnim
@@ -140,7 +149,7 @@ function MCCASeason1(props) {
                       <div className={styles.activeDate}>
                         <span>{s.format('D MMM.')}</span>
                         <span> ~ </span>
-                        <span>{e.format('D MMM.')}</span>
+                        <span>{e.format('D MMM.')} （预估）</span>
                       </div>;
                   }
                 }}
