@@ -50,16 +50,18 @@ const SCHEDULE = [
   {
     name: 'Blumia',
     activeDate: [moment([2020, 2, 28]), moment([2020, 3, 10])],
-    status: 'current',
+    status: 'done',
   },
   {
     name: 'Supa7onyz',
+    activeDate: [moment([2020, 3, 11]), moment([2020, 3, 24])],
+    status: 'current',
   },
   {
     name: '2jjy',
   },
   {
-    name: 'Flasthond',
+    name: 'ELENCE',
   },
   {
     name: 'rmk',
@@ -118,7 +120,7 @@ function MCCASeason1(props) {
               key="description"
               className={styles.desc}
             >
-              终于凑齐了 14 个曲师，可以在一起搞事情了！初次尝试，看看能接个什么样子的龙？
+              终于凑齐了 15 位曲师，可以在一起搞事情了！初次尝试，看看能接个什么样子的龙？
               <span role="img" aria-label="龙">🐉</span>
             </p>
 
