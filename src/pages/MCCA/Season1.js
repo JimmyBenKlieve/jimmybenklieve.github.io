@@ -55,10 +55,12 @@ const SCHEDULE = [
   {
     name: 'Supa7onyz',
     activeDate: [moment([2020, 3, 11]), moment([2020, 3, 24])],
-    status: 'current',
+    status: 'done',
   },
   {
     name: '2jjy',
+    activeDate: [moment([2020, 3, 25]), moment([2020, 4, 9])],
+    status: 'current',
   },
   {
     name: 'ELENCE',
