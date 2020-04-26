@@ -1,0 +1,148 @@
+$railColor: #e9e9e9 !default;
+$thumbColor: rgba(#000, 0.2) !default;
+$thumbHoverColor: rgba(#000, 0.35) !default;
+$thumbActiveColor: rgba(#000, 0.5) !default;
+
+$fadeInDuration: 140ms;
+$fadeInDelay: 0.2s;
+$fadeInEaseFunc: ease-out;
+
+$fadeOutDuration: 140ms;
+$fadeOutDelay: 0.8s;
+$fadeOutEaseFunc: ease-out;
+
+.scrollbar-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ps {
+  overflow: hidden !important;
+  overflow-anchor: none;
+  touch-action: auto;
+
+  &__rail-x,
+  &__rail-y {
+    z-index: 1000;
+    position: absolute;
+    display: none;
+    transition: none $fadeOutDuration $fadeOutDelay $fadeOutEaseFunc;
+
+    &:hover,
+    &.ps--clicking {
+      transition: none $fadeInDuration $fadeInDelay $fadeInEaseFunc;
+      background-color: $railColor;
+
+      .ps__thumb-x,
+      .ps__thumb-y {
+        background-color: $thumbColor;
+        transition: none $fadeInDuration $fadeInDelay $fadeInEaseFunc;
+
+        &:hover {
+          background-color: $thumbHoverColor;
+        }
+
+        &:active {
+          background-color: $thumbActiveColor;
+        }
+      }
+    }
+  }
+
+  &__rail-x {
+    height: 4px;
+    bottom: 0;
+
+    > .ps__thumb-x {
+      height: 2px;
+    }
+
+    &:hover,
+    &.ps--clicking {
+      height: 8px;
+
+      > .ps__thumb-x {
+        height: 8px;
+      }
+    }
+  }
+
+  &__rail-y {
+    width: 4px;
+    right: 0;
+
+    > .ps__thumb-y {
+      width: 2px;
+    }
+
+    &:hover,
+    &.ps--clicking {
+      width: 8px;
+
+      > .ps__thumb-y {
+        width: 8px;
+      }
+    }
+  }
+
+  &--active-x > &__rail-x,
+  &--active-y > &__rail-y {
+    display: block;
+  }
+
+  &__thumb-x,
+  &__thumb-y {
+    display: block;
+    position: relative;
+    background-color: $thumbHoverColor;
+
+    transition: none $fadeOutDuration $fadeOutDelay $fadeOutEaseFunc;
+  }
+
+  &__rail-x,
+  &__thumb-x {
+    transition-property: opacity, height, background-color !important;
+  }
+
+  &__rail-y,
+  &__thumb-y {
+    transition-property: opacity, width, background-color !important;
+  }
+}
+
+.theme-dark {
+  $railColor: #464646;
+  $thumbColor: rgba(#fff, 0.2);
+  $thumbHoverColor: rgba(#fff, 0.35);
+  $thumbActiveColor: rgba(#fff, 0.5);
+
+  .ps {
+    &__rail-x,
+    &__rail-y {
+      &:hover,
+      &.ps--clicking {
+        background-color: $railColor;
+
+        .ps__thumb-x,
+        .ps__thumb-y {
+          background-color: $thumbColor;
+
+          &:hover {
+            background-color: $thumbHoverColor;
+          }
+
+          &:active {
+            background-color: $thumbActiveColor;
+          }
+        }
+      }
+    }
+
+    &__thumb-x,
+    &__thumb-y {
+      background-color: $thumbHoverColor;
+    }
+  }
+
+}

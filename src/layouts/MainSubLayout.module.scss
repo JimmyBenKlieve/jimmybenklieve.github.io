@@ -1,0 +1,39 @@
+@import 'node_modules/mathsass/dist/math';
+@import '../variables';
+
+$leftWidth: $topWallWidth * cos($skewDeg);
+
+.main {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.left {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  width: $leftWidth;
+  height: 100%;
+}
+
+.right {
+  width: auto;
+  height: 100vh;
+  margin-left: $leftWidth;
+  overflow: auto;
+}
+
+.enableSkew {
+  $skewPerspectiveFix: cos($skewDeg);
+
+  .left {
+    position: absolute;
+    left: 0;
+    width: $leftWidth / $skewPerspectiveFix;
+    transform: skewY(-$skewDeg) scaleX($skewPerspectiveFix)
+      translateY($topWallWidth * sin($skewDeg));
+    transform-origin: top left;
+  }
+}

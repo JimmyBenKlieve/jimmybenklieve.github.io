@@ -1,0 +1,37 @@
+.clock {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.char {
+  position: relative;
+  white-space: pre;
+  display: inline-block;
+
+  > * {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &.char-colon {
+    animation: blink 0.5s infinite alternate-reverse
+      cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  &[data-char]::before {
+    content: attr(data-char);
+    display: inline-block;
+    color: transparent;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,145 @@
+@import 'src/variables';
+
+$popoutOffset: 6px;
+
+.main {
+  justify-content: center;
+  width: 100%;
+  min-width: 760px;
+  height: 100vh;
+  padding: 48px;
+  overflow-x: auto;
+  overflow-y: scroll;
+  font-family: 'Acre', sans-serif;
+  font-size: 24px;
+  line-height: 1.5;
+  color: rgba(#fff, 0.96);
+  background: linear-gradient(165deg, #242627, #121415);
+  text-shadow: none;
+
+  .box {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .host {
+    color: rgba(#fff, 0.66);
+    margin-bottom: 16px;
+    text-align: right;
+    user-select: none;
+  }
+
+  .title {
+    font-size: 2.5em;
+    line-height: 0.6;
+    margin-bottom: 48px;
+    white-space: pre;
+    user-select: none;
+
+    > :nth-child(1) {
+      margin-left: 0;
+    }
+
+    > :nth-child(2) {
+      margin-left: 0.5em;
+    }
+
+    > :nth-child(3) {
+      margin-left: 1em;
+    }
+
+    > :nth-child(4) {
+      margin-left: 1.5em;
+    }
+
+    > :not(.season) {
+      text-shadow: 0 0 12px #000;
+
+      &::first-letter {
+        color: #f72c58;
+        user-select: none;
+      }
+    }
+
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .season {
+      float: right;
+      font-size: 24px;
+      line-height: 1;
+    }
+  }
+
+  .rules {
+    margin-bottom: 0;
+  }
+
+  ol {
+    font-size: 28px;
+    font-family: 'Acre', sans-serif;
+
+    li {
+      position: relative;
+      margin-bottom: 8px;
+      font-size: 1em;
+
+      &,
+      > .activeDate {
+        color: rgba(#5ee728, 0.5);
+      }
+
+      .activeDate {
+        line-height: 1;
+        font-size: .65em;
+      }
+
+      &::after {
+        content: 'done!';
+
+        position: absolute;
+        top: 0.465em;
+        right: 0;
+
+        color: currentColor;
+        font-size: .65em;
+        white-space: nowrap;
+      }
+
+      &.current {
+        font-size: 1.25em;
+
+        &,
+        > .activeDate {
+          color: #fff;
+        }
+
+        &::after {
+          content: 'wip';
+        }
+
+        ~ li {
+          color: rgba(#fff, 0.33);
+
+          &::after {
+            display: none !important;
+          }
+        }
+      }
+
+      &.skipped {
+        &,
+        > .activeDate {
+          color: #f72c58;
+        }
+
+        &::after {
+          content: 'skipped';
+        }
+      }
+    }
+  }
+}

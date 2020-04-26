@@ -1,0 +1,215 @@
+@import '../variables';
+
+$popoutOffset: 4px !default;
+
+.main {
+  font-family: 'Oswald', Impact, sans-serif;
+  font-weight: 300;
+}
+
+.sider {
+
+  padding: 64px 76px 0;
+  font-weight: 400;
+  text-shadow: -2px -2px 0 rgba($textColor, 0.15);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+    color: transparent;
+    text-shadow: 0 0 0 rgba($textColor, 0.3), $popoutOffset $popoutOffset 0 $textColor;
+  }
+
+  .socialLinks {
+    user-select: none;
+
+    ul {
+      padding: 0;
+      list-style: none;
+      text-shadow: none;
+      font-size: 20px;
+      user-select: none;
+    }
+
+    li {
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      img {
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+        vertical-align: -0.12em;
+        display: inline-block;
+      }
+    }
+
+    a {
+      padding: 0.5em;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      text-decoration: none;
+      color: $textColor;
+
+      height: 1.75em;
+
+      outline: 0;
+      border: 2px solid currentColor;
+      background-color: rgba($textColor, 0.1);
+      border-radius: 24px;
+      filter: drop-shadow(0 0 0 rgba($textColor, 0.3));
+      transition: all 140ms ease-out;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: $accentColor;
+        transform: translate($popoutOffset, $popoutOffset / cos($skewDeg));
+        background-color: rgba($accentColor, 0.25);
+        filter: drop-shadow(
+          -$popoutOffset (-$popoutOffset / cos($skewDeg)) 0 rgba($accentColor, 0.3)
+        );
+      }
+
+      &:active {
+        background-color: rgba($accentColor, 0.4);
+      }
+    }
+  }
+
+  .externalLinks {
+    $gutterSize: 4px;
+
+    user-select: none;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      list-style: none;
+      padding: 0;
+      margin: 0 (-$gutterSize) 1em (-$gutterSize);
+    }
+
+    li {
+      padding: 0 $gutterSize;
+      margin-bottom: $gutterSize;
+
+      img {
+        width: 1em;
+        height: 1em;
+      }
+    }
+
+    a {
+      box-sizing: content-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      font-size: 1.75em;
+      width: 1em;
+      height: 1em;
+      color: $textColor;
+      background-color: $backgroundColor;
+      transition: all 140ms ease-out;
+      border: 2px solid currentColor;
+      border-radius: 1em;
+      overflow: hidden;
+
+      &:hover,
+      &:focus {
+        color: $secondaryAccentColor;
+        background-color: $backgroundColor;
+        transform: translate($popoutOffset, $popoutOffset);
+        box-shadow: -$popoutOffset (-$popoutOffset / cos($skewDeg)) 0
+          rgba($secondaryAccentColor, 0.3);
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 14px;
+    text-shadow: none;
+  }
+
+  .cc {
+    font-size: 18px;
+  }
+}
+
+.logo {
+  display: block;
+  width: 144px;
+  height: 144px;
+  background-color: #2f2f2f;
+  box-shadow: -6px 8px 0 rgba($textColor, 0.33);
+  margin-bottom: 1.5em;
+}
+
+.page {
+  padding: 76px 48px;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: scroll;
+  color: rgba($textColor, 0.85);
+  line-height: 1.5;
+  font-size: 24px;
+  background-color: $faceColor1;
+
+  .content {
+    width: 50%;
+    min-width: 600px;
+    margin: 0 auto;
+    padding: 24px 32px;
+    line-height: 1.25;
+    text-shadow: -1px 2px 0 rgba($textColor, 0.15);
+  }
+}
+
+:global(.theme-dark) {
+  .sider {
+    text-shadow: -2px -2px 0 rgba($textColorDark, 0.15);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-shadow: 0 0 0 rgba($textColorDark, 0.3), $popoutOffset $popoutOffset 0 $textColorDark;
+  }
+
+  .socialLinks {
+    a {
+      background-color: rgba($textColorDark, 0.1);
+      filter: drop-shadow(0 0 0 rgba($textColorDark, 0.3));
+    }
+  }
+
+  .socialLinks a,
+  .externalLinks a,
+  .copyright,
+  .cc {
+    color: $textColorDark;
+  }
+
+  .page {
+    color: rgba($textColorDark, 0.85);
+    background-color: $faceColorDark1;
+
+    .content {
+      text-shadow: -1px 2px 0 rgba($textColorDark, 0.15);
+    }
+  }
+}
