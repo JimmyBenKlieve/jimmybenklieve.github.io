@@ -38,4 +38,4 @@ jobs:
         yarn build
   
     - name: Deploy
-      run: bash $GITHUB_WORKSPACE/scripts/deploy.bash
+      run: bash $GITHUB_WORKSPACE/scripts/deploy.sh
