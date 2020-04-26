@@ -38,8 +38,7 @@ jobs:
         yarn build
   
     - name: Deploy
-      shell: bash
-      run: $GITHUB_WORKSPACE/scripts/deploy.sh
+      run: bash $GITHUB_WORKSPACE/scripts/deploy.sh
       env: 
         REMOTE_IP: ${{ secrets.REMOTE_IP }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
