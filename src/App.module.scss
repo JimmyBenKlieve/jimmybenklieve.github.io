@@ -1,0 +1,9 @@
+:root {
+  color: $textColor;
+}
+
+:global(.therm-dark) {
+  :root {
+    color: $textColorDark;
+  }
+}

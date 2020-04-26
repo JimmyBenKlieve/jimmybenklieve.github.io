@@ -25,10 +25,10 @@
   top: $topOffset;
   padding: 6px 12px;
   width: $topWallWidth;
-  height: $topWallHeight;
+  height: $topWallHeight + 4;
   font-family: 'Bebas Neue', sans-serif;
-  color: rgba(#000, 0.1);
-  transform: rotate(-$skewDeg) skewX($skewDeg) translateY(-$topWallHeight / 2);
+  color: rgba($textColor, 0.1);
+  transform: rotate(-$skewDeg) skewX($skewDeg) translateY( -$topWallHeight / 2 - 4);
   transform-origin: left top;
   user-select: none;
   background-color: $faceColor0;
@@ -56,16 +56,6 @@
       width: 100%;
       outline: 0;
 
-      &::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-        background-color: #f0f0f0;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: #b7b7b7;
-      }
-
       li {
         flex: 0 0 auto;
       }
@@ -88,20 +78,20 @@
           color: transparent;
           text-decoration: none;
           transition: all 140ms ease-out;
-          text-shadow: 0 0 0 #aaa;
+          text-shadow: 0 0 0 lighten($textColor, 10%);
           outline: 0;
           cursor: pointer;
 
           &:hover,
           &:focus {
-            background-color: #f0f0f0;
-            text-shadow: 8px -8px 0 #777, 0 0 0 rgba(#000, 0.25);
+            background-color: darken($backgroundColor, 5%);
+            text-shadow: 8px -8px 0 lighten($textColor, 25%), 0 0 0 rgba($textColor, 0.25);
           }
         }
 
         &.active {
           a {
-            text-shadow: 4px -4px 0 $accentColor, 0 0 0 rgba($accentColor, 0.25);
+            text-shadow: 4px -4px 0 $accentColor, 0 0 0 rgba($accentColor, 0.25) !important;
           }
         }
       }
@@ -132,7 +122,7 @@
     line-height: 0.75;
     text-align: right;
     white-space: nowrap;
-    color: rgba(#000, 0.5);
+    color: rgba($textColor, 0.5);
     transform: translateX(0.05em) rotate(-90deg) skewX(-$skewDeg) scale(1, 1.5);
     transform-origin: right bottom;
   }
@@ -160,7 +150,7 @@
 
   .contentWrapper {
     font-size: 24px;
-    text-shadow: 1px 2px 0 rgba(#000, 0.15);
+    text-shadow: 1px 2px 0 rgba($textColor, 0.15);
     height: 100%;
     overflow: hidden;
   }
@@ -189,5 +179,40 @@
     background-color: $faceColor2;
     transform: translateY($topOffset) skewY(-$skewDeg);
     transform-origin: $leftOffset top;
+  }
+}
+
+:global(.theme-dark) {
+  .topWall {
+    background-color: $faceColorDark0;
+
+    .nav .navlist li.navitem {
+      a {
+        text-shadow: 0 0 0 darken($textColorDark, 10%);
+
+        &:hover,
+        &:focus {
+          background-color: lighten($backgroundColorDark, 5%);
+          text-shadow: 8px -8px 0 darken($textColorDark, 25%), 0 0 0 rgba($textColorDark, 0.25);
+        }
+      }
+    }
+  }
+
+  .leftWall {
+    .clock {
+      color: rgba($textColor, .5);
+    }
+
+    &::after {
+      background-color: $faceColorDark3;
+    }
+  }
+
+  .rightWall {
+    &::before,
+    &::after {
+      background-color: $faceColorDark2;
+    }
   }
 }
