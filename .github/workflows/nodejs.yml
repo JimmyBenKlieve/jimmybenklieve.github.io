@@ -36,7 +36,7 @@ jobs:
       run: |
         yarn
         yarn build
-        mv ./build ./un1code.xyz
+        mv ./build ./un1c0de.xyz
         tar -zcvf web.tar un1c0de.xyz
   
     # - name: Deploy
