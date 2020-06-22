@@ -29,20 +29,22 @@ jobs:
     - name: Use Yarn
       uses: CultureHQ/actions-yarn@v1.0.1
     
-    - name: Install expect
-      run: sudo apt-get -y install expect
+    # - name: Install expect
+    #  run: sudo apt-get -y install expect
     
     - name: Build
       run: |
         yarn
         yarn build
+        mv ./build ./un1code.xyz
+        tar -zcvf web.tar un1c0de.xyz
   
-    - name: Deploy
-      run: bash $GITHUB_WORKSPACE/scripts/deploy.sh
-      env: 
-        REMOTE_IP: ${{ secrets.REMOTE_IP }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        REMOTE_PASSWORD: ${{ secrets.REMOTE_PASSWORD }}
+    # - name: Deploy
+    #  run: bash $GITHUB_WORKSPACE/scripts/deploy.sh
+    #  env: 
+    #    REMOTE_IP: ${{ secrets.REMOTE_IP }}
+    #    REMOTE_USER: ${{ secrets.REMOTE_USER }}
+    #    REMOTE_PASSWORD: ${{ secrets.REMOTE_PASSWORD }}
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
