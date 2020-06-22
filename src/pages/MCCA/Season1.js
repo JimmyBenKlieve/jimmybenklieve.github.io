@@ -64,17 +64,28 @@ const SCHEDULE = [
   },
   {
     name: 'ELENCE',
-    activeDate: [moment([2020, 4, 10]), moment([2020, 4, 24])],
-    status: 'current',
+    activeDate: [moment([2020, 4, 10]), moment([2020, 5, 1])],
+    status: 'done',
   },
   {
     name: 'rmk',
+    activeDate: [moment([2020, 5, 2]), moment([2020, 5, 3])],
+    status: 'done',
   },
   {
     name: 'whisper',
+    activeDate: [moment([2020, 5, 4]), moment([2020, 5, 5])],
+    status: 'done',
   },
   {
     name: 'Yako',
+    activeDate: [moment([2020, 5, 6]), moment([2020, 5, 21])],
+    status: 'done',
+  },
+  {
+    name: 'UN1C0DE (concatenate & mixing)',
+    activeDate: [moment([2020, 5, 22]), moment([2020, 6, 12])],
+    status: 'current',
   },
 ];
 
