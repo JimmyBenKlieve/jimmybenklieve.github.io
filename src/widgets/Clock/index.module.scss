@@ -1,0 +1,90 @@
+.clock {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1;
+
+  user-select: none;
+  font-size: 1em;
+
+  .time {
+    position: absolute;
+
+    font-size: 4em;
+    font-variant: tabular-nums;
+    line-height: .825em;
+    text-align: center;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-property: visibility, opacity;
+
+    span {
+      display: inline-block;
+      width: 1ch;
+    }
+  }
+
+  &:hover .time {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .plate {
+    width: 60%;
+    height: 60%;
+
+    // border-radius: 50%;
+    // background-color: #e0e0e0;
+
+    // clip-path: path('M50% 0 A 50% 50% 0 1 0 100% 100% A 50% 50% 0 1 0 100% 0');
+    // clip-rule: evenodd;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .plateCircle {
+      fill: #e6e6e6;
+    }
+
+    .hourHand,
+    .secondHand {
+      fill: #3688f2;
+    }
+
+
+    .plateCircle,
+    .hourHand,
+    .secondHand {
+      transition: fill .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .minuteHand {
+      fill: #000;
+    }
+  }
+
+  &.isPM {
+    .plateCircle {
+      fill: #dcdcdc;
+    }
+
+    .hourHand,
+    .secondHand {
+      fill: #f3365f;
+    }
+  }
+}

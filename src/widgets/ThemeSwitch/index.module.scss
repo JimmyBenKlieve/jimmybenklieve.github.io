@@ -1,0 +1,152 @@
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  overflow: hidden;
+
+  .backgroundGradient {
+    --hover-rotation: 75deg;
+    position: absolute;
+    z-index: 0;
+    top: 100%;
+    left: 60%;
+
+    width: 200%;
+    height: 400%;
+
+    background-image: conic-gradient(from -.25turn, #eee 0turn .5turn, #ccc .5turn);
+
+    transform: translate(-50%, -50%) rotate(0deg);
+
+    transition: 200ms cubic-bezier(0.215, 0.610, 0.355, 1);
+    transition-property: transform;
+
+    pointer-events: none;
+
+    &.transitionActive {
+      transform: translate(-50%, -50%) rotate(var(--hover-rotation));
+      transition-delay: 0ms !important;
+    }
+
+    &.transitionStart {
+      transform: translate(-50%, -50%) rotate(calc(var(--hover-rotation) + 360deg)) !important;
+      transition-duration: 260ms;
+    }
+
+    &.transitionEnd {
+      transform: translate(-50%, -50%) rotate(var(--hover-rotation)) !important;
+      transition-duration: 0ms;
+    }
+  }
+
+  &:hover {
+    .backgroundGradient {
+      transform: translate(-50%, -50%) rotate(var(--hover-rotation));
+      transition-delay: 120ms;
+    }
+  }
+
+  svg {
+    position: relative;
+    z-index: 1;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .themeIcon {
+    transform-origin: 10% 100%;
+    transform: rotate(-90deg);
+
+    > g {
+      // transform-origin: center center;
+    }
+
+    &,
+    > g {
+      transition: 300ms cubic-bezier(0.215, 0.610, 0.355, 1);
+      transition-property: transform, opacity;
+    }
+  }
+
+  // Reset self to center
+  :global(:root.theme-system) & .iconSystem,
+  :global(:root.theme-light) & .iconLight,
+  :global(:root.theme-dark) & .iconDark,
+  :global(:root.theme-time) & .iconTime {
+    transform: rotate(0);
+  }
+
+  // Self hover translate
+  :global(:root.theme-system) &:hover .iconSystem,
+  :global(:root.theme-light) &:hover .iconLight,
+  :global(:root.theme-dark) &:hover .iconDark,
+  :global(:root.theme-time) &:hover .iconTime {
+    transform: rotate(30deg);
+
+    > g {
+      transform: rotate(-30deg) scale(.8);
+    }
+  }
+
+  // Self hover next icon translate
+  :global(:root.theme-system) &:hover .iconLight,
+  :global(:root.theme-light) &:hover .iconDark,
+  :global(:root.theme-dark) &:hover .iconTime,
+  :global(:root.theme-time) &:hover .iconSystem {
+    transform: rotate(-30deg);
+    transition-delay: 85ms;
+
+    > g {
+      transform: rotate(30deg) scale(1);
+    }
+  }
+
+  // Out
+  :global(:root.theme-system) & .iconTime,
+  :global(:root.theme-light) & .iconSystem,
+  :global(:root.theme-dark) & .iconLight,
+  :global(:root.theme-time) & .iconDark {
+    transform: rotate(180deg);
+    transition-duration: 140ms;
+
+    > g {
+      transform: rotate(-180deg) scale(.5);
+      transition-duration: 140ms;
+    }
+  }
+
+  :global(:root.theme-system) & .iconDark,
+  :global(:root.theme-light) & .iconTime,
+  :global(:root.theme-dark) & .iconSystem,
+  :global(:root.theme-time) & .iconLight {
+    &.transitionActive {
+      transform: rotate(180deg);
+
+      > g {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &.transitionStart {
+      transform: rotate(270deg);
+
+      > g {
+        transform: rotate(-270deg);
+      }
+    }
+
+    &.transitionEnd {
+      transform: rotate(-90deg) !important;
+      transition-duration: 0ms !important;
+
+      > g {
+        transform: rotate(-90deg) !important;
+        transition-duration: 0ms !important;
+      }
+    }
+  }
+}
